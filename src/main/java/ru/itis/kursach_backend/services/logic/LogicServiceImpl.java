@@ -1,6 +1,7 @@
 package ru.itis.kursach_backend.services.logic;
 
 import org.apache.commons.math3.stat.regression.SimpleRegression;
+import org.apache.commons.math3.util.FastMath;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -13,10 +14,10 @@ public class LogicServiceImpl implements LogicService {
         sr.addData(data);
         int k = (int) sr.predict(year);
         int n = data.length-1;
-        if(Math.abs(k-data[n][1])<data[n][1]) {
-            return (int) sr.predict(year);
+        if(FastMath.abs(k-data[n][1])<data[n][1]) {
+            return k;
         }else {
-            return (int) (data[n][1]*0.9);
+            return (int) (data[n][1]*(data[n][1]/data[n-1][1]));
         }
     }
 }
