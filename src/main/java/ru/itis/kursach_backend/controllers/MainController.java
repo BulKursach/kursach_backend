@@ -48,6 +48,7 @@ public class MainController {
         return ResponseEntity.ok(diseaseService.getAllDiseaseDataByDistrict(district, disease));
     }
 
+
     @GetMapping("/info")
     public ResponseEntity<InfoResponseDto> getInfo() {
         ObjectMapper mapper = new ObjectMapper();

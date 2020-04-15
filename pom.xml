@@ -30,16 +30,15 @@
 
     <dependencies>
         <dependency>
+            <groupId>com.github.signaflo</groupId>
+            <artifactId>timeseries</artifactId>
+            <version>0.4</version>
+        </dependency>
+        <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-math3</artifactId>
             <version>3.6.1</version>
         </dependency>
-        <dependency>
-            <groupId>com.numericalmethod</groupId>
-            <artifactId>suanshu</artifactId>
-            <version>4.0.0</version>
-        </dependency>
-
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jdbc</artifactId>
