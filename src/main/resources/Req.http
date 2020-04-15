@@ -1,0 +1,6 @@
+
+GET http://localhost:8081/districts?district=российская федерация&disease=ВИЧ
+Accept: application/json
+
+###
+
