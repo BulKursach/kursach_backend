@@ -30,10 +30,6 @@ public class Disease {
 
     private Boolean predicted;
 
-    public Boolean isPredicted() {
-        return predicted;
-    }
-
     public static double[][] getAbsData(List<Disease> diseases) {
         double[][] res = new double[diseases.size()][];
         for (int i = 0; i < diseases.size(); i++) {
@@ -68,5 +64,9 @@ public class Disease {
             res[i] = new double[]{disease.getDiseaseID().getYear(), disease.getRel_child()};
         }
         return res;
+    }
+
+    public Boolean isPredicted() {
+        return predicted;
     }
 }
