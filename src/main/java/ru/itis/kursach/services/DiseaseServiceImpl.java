@@ -12,10 +12,6 @@ import java.util.List;
 @Service
 public class DiseaseServiceImpl implements DiseaseService {
 
-    private static final String DEFAULT_DISEASE = "ВИЧ";
-
-    private static final String DEFAULT_REGION = "российская федерация";
-
     @Autowired
     private DiseaseRepository diseaseRepository;
 
@@ -23,29 +19,21 @@ public class DiseaseServiceImpl implements DiseaseService {
     private LogicService logicService;
 
     @Override
-    public DiseasesResponseDto getAllDiseaseDataByDefault(String disease, Short year) {
-        if (disease == null) {
-            disease = DEFAULT_DISEASE;
-        }
-        if (year == null) {
-            year = lastNotPredicted(disease);
-        }
+    public DiseasesResponseDto getDiseaseDataByAllDistricts(String disease, Short year) {
+
         return DiseasesResponseDto.from(
                 diseaseRepository.findAllByDiseaseID_DiseaseAndDiseaseID_Year(disease, year),
                 diseaseRepository.findAllUnpredictedYears(disease), diseaseRepository.findAllPredictedYears(disease));
     }
 
     @Override
-    public DiseasesResponseDto getAllDiseaseDataByDistrict(String district, String disease) {
-        if (disease == null) {
-            disease = DEFAULT_DISEASE;
-        }
+    public DiseasesResponseDto getDiseaseDataByDistrict(String district, String disease) {
 
         List<Disease> data = diseaseRepository.findAllByDiseaseID_DistrictAndDiseaseID_Disease(district, disease);
 
         short year = (short) (lastNotPredicted(disease) + 1);
 
-        if (disease.equals(DEFAULT_DISEASE)) {
+        if (disease.equals("ВИЧ")) {
             diseaseRepository.savePredictedDataWithChildes(disease, year, district,
                     logicService.predict(Disease.getAbsData(data), year),
                     logicService.predict(Disease.getRelData(data), year),
@@ -64,7 +52,8 @@ public class DiseaseServiceImpl implements DiseaseService {
         );
     }
 
-    private Short lastNotPredicted(String disease) {
+    public Short lastNotPredicted(String disease) {
+
         List<Short> years = diseaseRepository.findAllUnpredictedYears(disease);
         return years.get(0);
     }

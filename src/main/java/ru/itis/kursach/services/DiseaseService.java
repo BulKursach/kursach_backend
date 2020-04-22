@@ -4,8 +4,9 @@ import ru.itis.kursach.dto.DiseasesResponseDto;
 
 public interface DiseaseService {
 
-    DiseasesResponseDto getAllDiseaseDataByDefault(String disease, Short year);
+    DiseasesResponseDto getDiseaseDataByAllDistricts(String disease, Short year);
 
-    DiseasesResponseDto getAllDiseaseDataByDistrict(String district, String disease);
+    DiseasesResponseDto getDiseaseDataByDistrict(String district, String disease);
 
+    Short lastNotPredicted(String disease);
 }

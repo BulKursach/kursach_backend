@@ -12,32 +12,32 @@ public class ARIMALogicServiceImpl implements LogicService {
     @Override
     public Integer predict(double[][] data, double year) {
 
-        if (data.length == 1){
+        if (data.length == 1) {
             return (int) (data[0][1] * 0.9);
         }
 
         int average = 0;
 
         double[] valueMass = new double[data.length];
-        for (int i = 0; i < data.length; i++){
+        for (int i = 0; i < data.length; i++) {
             valueMass[i] = data[i][1];
-            average = average + (int)data[i][1];
+            average = average + (int) data[i][1];
         }
 
         average = average / data.length;
-        int size = (int)year - (int)data[data.length - 1][0];
+        int size = (int) year - (int) data[data.length - 1][0];
 
-        ArimaOrder modelOrder = ArimaOrder.order(1,1,0);
+        ArimaOrder modelOrder = ArimaOrder.order(1, 1, 0);
         TimeSeries timeSeries1 = Ts.newAnnualSeries(valueMass);
-        Arima model = Arima.model(timeSeries1,modelOrder);
+        Arima model = Arima.model(timeSeries1, modelOrder);
         Forecast forecast = model.forecast(size);
 
         double[] value = forecast.pointEstimates().asArray();
 
-        if (value[size - 1] > average * 10){
-            return (int)(average * 0.9);
+        if (value[size - 1] > average * 10) {
+            return (int) (average * 0.9);
         }
 
-        return (int)value[size - 1];
+        return (int) value[size - 1];
     }
 }
