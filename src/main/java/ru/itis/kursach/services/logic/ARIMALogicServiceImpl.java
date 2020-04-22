@@ -11,11 +11,19 @@ import org.springframework.stereotype.Service;
 public class ARIMALogicServiceImpl implements LogicService {
     @Override
     public Integer predict(double[][] data, double year) {
-
-        if (data.length == 1) {
-            return (int) (data[0][1] * 0.9);
+        for(int i = 0;i<data.length;i++){ // если вдруг предсказываем  на известное значение(я хз как такое может быть, но, пускай) ^_^
+            if((int)year==(int)data[i][0]){
+                return (int)data[i][1];
+            }
+        }
+        if(data.length == 0){
+            return 0;// Если значений, как таковых, вообще нет,делать нечего ,бьём в баклуши(тут даже значения других регионов ничего не дадут)
         }
 
+        if (data.length == 1) {
+            return (int) (data[0][1] * 0.9); //если значение одно,предполагаем,что в следующем году ситуация будет лучше
+        }                                    // вообще, по хорошему, стоит посомтреть на ситуацию в других регионах, и взависимости
+                                            //от этого прогнозировать, в будущем,хорошо было бы...
         int average = 0;
 
         double[] valueMass = new double[data.length];
