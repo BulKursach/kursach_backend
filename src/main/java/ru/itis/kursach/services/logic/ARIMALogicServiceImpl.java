@@ -42,7 +42,7 @@ public class ARIMALogicServiceImpl implements LogicService {
 
         double[] value = forecast.pointEstimates().asArray();
 
-        if (value[size - 1] > average * 10) {
+        if (value[size - 1] > average * 3||value[size - 1] <0||value[size - 1] < average / 3.0) {
             return (int) (average * 0.9);
         }
 
