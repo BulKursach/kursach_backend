@@ -10,8 +10,11 @@ import java.util.List;
 @Service
 public class DistrictServiceImpl implements DistrictService {
 
-    @Autowired
-    private DistrictRepository districtRepository;
+    private final DistrictRepository districtRepository;
+
+    public DistrictServiceImpl(DistrictRepository districtRepository) {
+        this.districtRepository = districtRepository;
+    }
 
     @Override
     public List<District> getAllDistricts() {

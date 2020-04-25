@@ -1,14 +1,14 @@
 $(document).ready(function () {
 
-    var jVal = {
+    let jVal = {
         'disease': function () {
 
             $('body').append('<div id="diseaseInfo" class="info"></div>');
 
-            var form = document.getElementById("valuesChild");
-            var position = $('#content').offset();
-            var diseaseInfo = $('#diseaseInfo');
-            var option = $('#disease').val();
+            let form = document.getElementById("valuesChild");
+            let position = $('#content').offset();
+            let diseaseInfo = $('#diseaseInfo');
+            let option = $('#disease').val();
 
             diseaseInfo.css({
                 top: position.top + 38,
@@ -21,7 +21,7 @@ $(document).ready(function () {
                 diseaseInfo.removeClass('correct').addClass('error').html("Выберите заболевание!").show();
             } else {
                 diseaseInfo.removeClass('error').addClass('correct').html('&radic;').show();
-                if (option === "вич") {
+                if (option == "вич") {
                     form.style.display = "block";
                 } else {
                     form.style.display = "none";
@@ -34,9 +34,9 @@ $(document).ready(function () {
 
             $('body').append('<div id="regionInfo" class="info"></div>');
 
-            var position = $('#content').offset();
-            var regionInfo = $('#regionInfo');
-            var option = $('#region').val();
+            let position = $('#content').offset();
+            let regionInfo = $('#regionInfo');
+            let option = $('#region').val();
 
             regionInfo.css({
                 top: position.top + 109,
@@ -55,12 +55,12 @@ $(document).ready(function () {
 
             $('body').append('<div id="valuesInfo" class="info"></div>');
 
-            var absolute = +document.getElementById("absolute").value;
-            var population = +document.getElementById("population").value;
+            let absolute = +document.getElementById("absolute").value;
+            let population = +document.getElementById("population").value;
 
-            var valuesInfo = $('#valuesInfo');
-            var populationPos = $('#population');
-            var position = populationPos.offset();
+            let valuesInfo = $('#valuesInfo');
+            let populationPos = $('#population');
+            let position = populationPos.offset();
 
             valuesInfo.css({
                 top: position.top + 2,
@@ -84,13 +84,13 @@ $(document).ready(function () {
 
             $('body').append('<div id="valuesHivInfo" class="info"></div>');
 
-            var absolute = +document.getElementById("absolute-hiv").value;
-            var population = +document.getElementById("population-hiv").value;
+            let absolute = +document.getElementById("absolute-hiv").value;
+            let population = +document.getElementById("population-hiv").value;
 
-            var form = document.getElementById("valuesChild");
-            var valuesHivInfo = $('#valuesHivInfo');
-            var populationHivPos = $('#population-hiv');
-            var position = populationHivPos.offset();
+            let form = document.getElementById("valuesChild");
+            let valuesHivInfo = $('#valuesHivInfo');
+            let populationHivPos = $('#population-hiv');
+            let position = populationHivPos.offset();
 
             valuesHivInfo.css({
                 top: position.top + 2,
@@ -118,11 +118,11 @@ $(document).ready(function () {
 
             $('body').append('<div id="yearInfo" class="info"></div>');
 
-            var yearInfo = $('#yearInfo');
-            var year = +document.getElementById("year").value;
+            let yearInfo = $('#yearInfo');
+            let year = +document.getElementById("year").value;
 
-            var field = $('#year');
-            var position = field.offset();
+            let field = $('#year');
+            let position = field.offset();
 
             yearInfo.css({
                 top: position.top + 2,
@@ -150,19 +150,19 @@ $(document).ready(function () {
         }
     };
 
-    // $('#button').click(function () {
-    //     var obj = $.browser.webkit ? $('body') : $('html');
-    //     obj.animate({scrollTop: $('#MyForm').offset().top}, 750, function () {
-    //         jVal.errors = false;
-    //         jVal.disease();
-    //         jVal.region();
-    //         jVal.values();
-    //         jVal.valuesChild();
-    //         jVal.year();
-    //         jVal.send();
-    //     });
-    //     return false;
-    // });
+    $('#button').click(function () {
+        let obj = $.browser.webkit ? $('body') : $('html');
+        obj.animate({scrollTop: $('#MyForm').offset().top}, 750, function () {
+            jVal.errors = false;
+            jVal.disease();
+            jVal.region();
+            jVal.values();
+            jVal.valuesChild();
+            jVal.year();
+            jVal.send();
+        });
+        return false;
+    });
 
     $('#disease').change(jVal.disease);
     $('#region').change(jVal.region);

@@ -12,11 +12,20 @@ import java.util.List;
 @Service
 public class DiseaseServiceImpl implements DiseaseService {
 
-    @Autowired
-    private DiseaseRepository diseaseRepository;
+    private final DiseaseRepository diseaseRepository;
 
-    @Autowired
-    private LogicService logicService;
+    private final LogicService logicService;
+
+    public DiseaseServiceImpl(DiseaseRepository diseaseRepository, LogicService logicService) {
+        this.diseaseRepository = diseaseRepository;
+        this.logicService = logicService;
+    }
+
+    @Override
+    public List<String> getAllDiseaseNames() {
+
+        return diseaseRepository.findAllDiseaseNames();
+    }
 
     @Override
     public DiseasesResponseDto getDiseaseDataByAllDistricts(String disease, Short year) {

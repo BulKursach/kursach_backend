@@ -25,13 +25,15 @@
                 <label for="disease" class="block">Выберите заболевание:</label>
                 <select type="text" id="disease" name="disease" class="selectpicker" data-style="btn-info"
                         multiple data-max-options="1" data-live-search="true">
-                    <option value="вич">ВИЧ</option>
-                    <option value="гепатит">Гепатит</option>
-                    <option value="новообразования">Новообразования</option>
-                    <option value="артериальнаяГипертензия">Артериальная Гипертензия</option>
-                    <option value="психическиеЗаболевания">Психические Заболевания</option>
-                    <option value="туберкулез">Туберкулез</option>
-                    <option value="сахарныйДиабет">Сахарный Диабет</option>
+                    <option th:each="disease : ${diseases}" th:value="${disease}"
+                            th:text="${disease}"></option>
+<!--                    <option value="вич">ВИЧ</option>-->
+<!--                    <option value="гепатит">Гепатит</option>-->
+<!--                    <option value="новообразования">Новообразования</option>-->
+<!--                    <option value="артериальнаяГипертензия">Артериальная Гипертензия</option>-->
+<!--                    <option value="психическиеЗаболевания">Психические Заболевания</option>-->
+<!--                    <option value="туберкулез">Туберкулез</option>-->
+<!--                    <option value="сахарныйДиабет">Сахарный Диабет</option>-->
                 </select>
             </div>
 
@@ -39,8 +41,8 @@
                 <label for="region" class="block">Выберите регион:</label>
                 <select type="text" id="region" name="region" class="selectpicker" data-style="btn-info"
                         multiple data-max-options="1" data-live-search="true">
-                    <option th:each="temp : ${districts}" th:value="${temp.getDistrict()}"
-                            th:text="${temp.getDistrict()}"></option>
+                    <option th:each="district : ${districts}" th:value="${district.getDistrict()}"
+                            th:text="${district.getDistrict()}"></option>
                 </select>
             </div>
 

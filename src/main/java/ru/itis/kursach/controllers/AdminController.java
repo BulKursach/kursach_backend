@@ -31,9 +31,9 @@ public class AdminController extends AbstractController {
     @GetMapping
     public String getAdminPanel(Model model) {
 
-        List<District> districts = districtService.getAllDistricts();
+        model.addAttribute("districts", districtService.getAllDistricts());
 
-        model.addAttribute("districts", districts);
+        model.addAttribute("diseases", diseaseService.getAllDiseaseNames());
 
         return "admin";
     }
