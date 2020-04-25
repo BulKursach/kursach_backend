@@ -57,4 +57,10 @@ public class DiseaseServiceImpl implements DiseaseService {
         List<Short> years = diseaseRepository.findAllUnpredictedYears(disease);
         return years.get(0);
     }
+
+    @Override
+    public void addDiseaseData(Disease disease) {
+
+        diseaseRepository.save(disease);
+    }
 }

@@ -1,6 +1,7 @@
 package ru.itis.kursach.services;
 
 import ru.itis.kursach.dto.DiseasesResponseDto;
+import ru.itis.kursach.models.Disease;
 
 public interface DiseaseService {
 
@@ -9,4 +10,6 @@ public interface DiseaseService {
     DiseasesResponseDto getDiseaseDataByDistrict(String district, String disease);
 
     Short lastNotPredicted(String disease);
+
+    void addDiseaseData(Disease disease);
 }

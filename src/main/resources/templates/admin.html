@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org" >
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Admin Panel</title>
     <meta charset="utf-8">
@@ -18,22 +18,20 @@
 <div id="header"><h1 id="h1">Admin panel</h1></div>
 
 <div id="content">
-    <form id="MyForm" role="form" method="POST" action="">
+    <form id="MyForm" role="form" method="POST" action="/admin">
         <fieldset id="fieldset">
 
             <div class="form-group">
                 <label for="disease" class="block">Выберите заболевание:</label>
                 <select type="text" id="disease" name="disease" class="selectpicker" data-style="btn-info"
                         multiple data-max-options="1" data-live-search="true">
-                    <options>
-                        <option value="вич">ВИЧ</option>
-                        <option value="гепатит">Гепатит</option>
-                        <option value="новообразования">Новообразования</option>
-                        <option value="артериальнаяГипертензия">Артериальная Гипертензия</option>
-                        <option value="психическиеЗаболевания">Психические Заболевания</option>
-                        <option value="туберкулез">Туберкулез</option>
-                        <option value="сахарныйДиабет">Сахарный Диабет</option>
-                    </options>
+                    <option value="вич">ВИЧ</option>
+                    <option value="гепатит">Гепатит</option>
+                    <option value="новообразования">Новообразования</option>
+                    <option value="артериальнаяГипертензия">Артериальная Гипертензия</option>
+                    <option value="психическиеЗаболевания">Психические Заболевания</option>
+                    <option value="туберкулез">Туберкулез</option>
+                    <option value="сахарныйДиабет">Сахарный Диабет</option>
                 </select>
             </div>
 
@@ -41,41 +39,39 @@
                 <label for="region" class="block">Выберите регион:</label>
                 <select type="text" id="region" name="region" class="selectpicker" data-style="btn-info"
                         multiple data-max-options="1" data-live-search="true">
-                    <options>
-                        <option th:each="temp : ${districts}" th:value="${temp.getDistrict()}"
-                                th:text="${temp.getDistrict()}"></option>
-                    </options>
+                    <option th:each="temp : ${districts}" th:value="${temp.getDistrict()}"
+                            th:text="${temp.getDistrict()}"></option>
                 </select>
             </div>
 
             <div class="form-group" id="values">
                 <div class="number-block">
-                    <label class="block">Абсолютное число:</label>
-                    <input type="number" class="form-control" name="absolute" id="absolute" /> 
+                    <label class="block" for="absolute">Абсолютное число:</label>
+                    <input type="number" class="form-control" name="absolute" id="absolute"/>
                 </div>
                 <div class="number-block">
-                    <label class="block">На 100 000 всего населения:</label>
-                    <input type="number" class="form-control" name="population" id="population" />  
+                    <label class="block" for="population">На 100 000 всего населения:</label>
+                    <input type="number" class="form-control" name="population" id="population"/>
                 </div>
             </div>
 
             <div class="form-group" id="valuesChild">
                 <h4 id="hiv-children">Среди детей (0 - 17 лет включительно)</h4>
                 <div class="number-block">
-                    <label class="block">Абсолютное число:</label>
-                    <input type="number" class="form-control" name="absolute-hiv" id="absolute-hiv" /> 
+                    <label class="block" for="absoluteHiv">Абсолютное число:</label>
+                    <input type="number" class="form-control" name="absoluteHiv" id="absoluteHiv"/>
                 </div>
                 <div class="number-block">
-                    <label class="block">На 100 000 соотв. населения:</label>
-                    <input type="number" class="form-control" name="population-hiv" id="population-hiv" />  
+                    <label class="block" for="populationHiv">На 100 000 соотв. населения:</label>
+                    <input type="number" class="form-control" name="populationHiv" id="populationHiv"/>
                 </div>
             </div>
-                
+
             <div class="form-group" id="yearDiv">
                 <label for="year" class="block">Введите год:</label>
-                <input type="number" id="year" class="form-control" name="year" />
+                <input type="number" id="year" class="form-control" name="year"/>
             </div>
-            <button type="submit" id="button" class="btn btn-success">Send</button>
+            <button type="submit" form="MyForm" id="button" class="btn btn-success" value="Send">Send</button>
         </fieldset>
     </form>
 </div>
