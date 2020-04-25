@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 public class ARIMALogicServiceImpl implements LogicService {
     @Override
     public Integer predict(double[][] data, double year) {
+
         for (int i = 0; i < data.length; i++) {
             if ((int) year == (int) data[i][0]) {
                 return (int) data[i][1];
@@ -23,6 +24,7 @@ public class ARIMALogicServiceImpl implements LogicService {
         if (data.length == 1) {
             return (int) (data[0][1] * 0.9);
         }
+
         int average = 0;
 
         double[] valueMass = new double[data.length];
@@ -41,7 +43,7 @@ public class ARIMALogicServiceImpl implements LogicService {
 
         double[] value = forecast.pointEstimates().asArray();
 
-        if (value[size - 1] > average * 10) {
+        if (value[size - 1] > average * 3||value[size - 1] <0||value[size - 1] < average / 3.0) {
             return (int) (average * 0.9);
         }
 
