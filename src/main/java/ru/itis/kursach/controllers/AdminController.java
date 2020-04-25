@@ -8,11 +8,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import ru.itis.kursach.forms.DiseaseForm;
 import ru.itis.kursach.models.Disease;
 import ru.itis.kursach.models.DiseaseID;
-import ru.itis.kursach.models.District;
 import ru.itis.kursach.services.DiseaseService;
 import ru.itis.kursach.services.DistrictService;
-
-import java.util.List;
 
 @Controller
 @RequestMapping("/admin")

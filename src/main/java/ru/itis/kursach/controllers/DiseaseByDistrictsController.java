@@ -8,10 +8,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import ru.itis.kursach.assemblers.DiseaseModelAssembler;
-import ru.itis.kursach.assemblers.DistrictModelAssembler;
 import ru.itis.kursach.dto.DiseasesResponseDto;
 import ru.itis.kursach.services.DiseaseService;
-import ru.itis.kursach.services.DistrictService;
 
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
@@ -25,8 +23,7 @@ public class DiseaseByDistrictsController extends AbstractController {
 
     private final DiseaseModelAssembler diseaseModelAssembler;
 
-    public DiseaseByDistrictsController(DiseaseService diseaseService, DistrictService districtService,
-                                        DistrictModelAssembler districtModelAssembler, DiseaseModelAssembler diseaseModelAssembler) {
+    public DiseaseByDistrictsController(DiseaseService diseaseService, DiseaseModelAssembler diseaseModelAssembler) {
         this.diseaseService = diseaseService;
         this.diseaseModelAssembler = diseaseModelAssembler;
     }

@@ -1,6 +1,5 @@
 package ru.itis.kursach.services;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ru.itis.kursach.dto.DiseasesResponseDto;
 import ru.itis.kursach.models.Disease;
