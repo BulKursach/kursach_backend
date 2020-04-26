@@ -21,7 +21,7 @@ $(document).ready(function () {
                 diseaseInfo.removeClass('correct').addClass('error').html("Выберите заболевание!").show();
             } else {
                 diseaseInfo.removeClass('error').addClass('correct').html('&radic;').show();
-                if (option == "вич") {
+                if (option == "ВИЧ") {
                     form.style.display = "block";
                 } else {
                     form.style.display = "none";

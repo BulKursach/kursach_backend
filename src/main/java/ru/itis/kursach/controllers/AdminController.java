@@ -2,6 +2,7 @@ package ru.itis.kursach.controllers;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -10,6 +11,8 @@ import ru.itis.kursach.models.Disease;
 import ru.itis.kursach.models.DiseaseID;
 import ru.itis.kursach.services.DiseaseService;
 import ru.itis.kursach.services.DistrictService;
+
+import javax.validation.Valid;
 
 @Controller
 @RequestMapping("/admin")
@@ -32,11 +35,17 @@ public class AdminController extends AbstractController {
 
         model.addAttribute("diseases", diseaseService.getAllDiseaseNames());
 
+        model.addAttribute("diseaseForm", new DiseaseForm());
+
         return "admin";
     }
 
     @PostMapping
-    public String processData(DiseaseForm diseaseForm) {
+    public String processData(@Valid DiseaseForm diseaseForm, Errors errors) {
+
+        if (errors.hasErrors()) {
+            return "admin";
+        }
 
         Disease disease = Disease.builder()
                 .diseaseID(new DiseaseID(diseaseForm.getDisease(), diseaseForm.getYear(), diseaseForm.getRegion()))
