@@ -8,5 +8,6 @@ import java.util.List;
 
 @Repository
 public interface DistrictRepository extends JpaRepository<District, String> {
+
     List<District> findAll();
 }

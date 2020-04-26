@@ -1,6 +1,5 @@
 package ru.itis.kursach.services;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ru.itis.kursach.dto.DiseasesResponseDto;
 import ru.itis.kursach.models.Disease;
@@ -12,11 +11,20 @@ import java.util.List;
 @Service
 public class DiseaseServiceImpl implements DiseaseService {
 
-    @Autowired
-    private DiseaseRepository diseaseRepository;
+    private final DiseaseRepository diseaseRepository;
 
-    @Autowired
-    private LogicService logicService;
+    private final LogicService logicService;
+
+    public DiseaseServiceImpl(DiseaseRepository diseaseRepository, LogicService logicService) {
+        this.diseaseRepository = diseaseRepository;
+        this.logicService = logicService;
+    }
+
+    @Override
+    public List<String> getAllDiseaseNames() {
+
+        return diseaseRepository.findAllDiseaseNames();
+    }
 
     @Override
     public DiseasesResponseDto getDiseaseDataByAllDistricts(String disease, Short year) {
@@ -56,5 +64,11 @@ public class DiseaseServiceImpl implements DiseaseService {
 
         List<Short> years = diseaseRepository.findAllUnpredictedYears(disease);
         return years.get(0);
+    }
+
+    @Override
+    public void addDiseaseData(Disease disease) {
+
+        diseaseRepository.save(disease);
     }
 }

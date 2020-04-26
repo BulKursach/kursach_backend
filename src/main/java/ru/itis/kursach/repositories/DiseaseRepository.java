@@ -13,6 +13,13 @@ import java.util.List;
 
 @Repository
 public interface DiseaseRepository extends JpaRepository<Disease, DiseaseID> {
+
+    @Query(
+            value = "SELECT DISTINCT disease FROM diseases;",
+            nativeQuery = true
+    )
+    List<String> findAllDiseaseNames();
+
     @Query(
             value = "SELECT DISTINCT year FROM diseases " +
                     "    WHERE predicted = false AND disease = :disease " +

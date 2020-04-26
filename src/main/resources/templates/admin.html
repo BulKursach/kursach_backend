@@ -1,0 +1,82 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" lang="ru">
+<head>
+    <title>Admin Panel</title>
+    <meta charset="utf-8">
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="bootstrap-3.3.4/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="bootstrap-3.3.4/bootstrap-select.min.css">
+    <script src="bootstrap-3.3.4/jquery.min.js"></script>
+    <script src="bootstrap-3.3.4/dist/js/bootstrap.min.js"></script>
+    <script src="bootstrap-3.3.4/bootstrap-select.min.js"></script>
+    <script src="js/validation.js"></script>
+
+</head>
+
+<body id="body">
+
+<div id="header"><h1 id="h1">Admin panel</h1></div>
+
+<div id="content">
+    <form id="MyForm" role="form" method="POST" th:action="@{/admin}" th:object="${diseaseForm}">
+        <fieldset id="fieldset">
+
+            <div class="form-group">
+                <label for="disease" class="block">Выберите заболевание:</label>
+                <select type="text" id="disease" name="disease" class="selectpicker" data-style="btn-info"
+                        multiple data-max-options="1" data-live-search="true" th:field="*{disease}">
+                    <option th:each="d : ${diseases}" th:value="${d}"
+                            th:text="${d}"></option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="region" class="block">Выберите регион:</label>
+                <select type="text" id="region" name="region" class="selectpicker" data-style="btn-info"
+                        multiple data-max-options="1" data-live-search="true" th:field="*{region}">
+                    <option th:each="district : ${districts}" th:value="${district.getDistrict()}"
+                            th:text="${district.getDistrict()}"></option>
+                </select>
+            </div>
+
+            <div class="form-group" id="values">
+                <div class="number-block">
+                    <label class="block" for="absolute">Абсолютное число:</label>
+                    <input type="number" class="form-control" name="absolute" id="absolute" value="absolute"
+                            th:field="*{absolute}"/>
+                    <span class="validationError"
+                          th:if="${#fields.hasErrors('absolute')}"></span>
+                </div>
+                <div class="number-block">
+                    <label class="block" for="population">На 100 000 всего населения:</label>
+                    <input type="number" class="form-control" name="population" id="population"
+                            th:field="*{population}"/>
+                </div>
+            </div>
+
+            <div class="form-group" id="valuesChild">
+                <h4 id="hiv-children">Среди детей (0 - 17 лет включительно)</h4>
+                <div class="number-block">
+                    <label class="block" for="absoluteHiv">Абсолютное число:</label>
+                    <input type="number" class="form-control" name="absoluteHiv" id="absoluteHiv"
+                            th:field="*{absoluteHiv}"/>
+                </div>
+                <div class="number-block">
+                    <label class="block" for="populationHiv">На 100 000 соотв. населения:</label>
+                    <input type="number" class="form-control" name="populationHiv" id="populationHiv"
+                            th:field="*{populationHiv}"/>
+                </div>
+            </div>
+
+            <div class="form-group" id="yearDiv">
+                <label for="year" class="block">Введите год:</label>
+                <input type="number" id="year" class="form-control" name="year"
+                        th:field="*{year}"/>
+            </div>
+            <button type="submit" form="MyForm" id="button" class="btn btn-success" value="Send">Send</button>
+        </fieldset>
+    </form>
+</div>
+</body>
+</html>
