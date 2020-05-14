@@ -1,5 +1,6 @@
 package ru.itis.kursach.services;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import ru.itis.kursach.dto.DiseasesResponseDto;
 import ru.itis.kursach.models.Disease;
@@ -9,6 +10,7 @@ import ru.itis.kursach.services.logic.LogicService;
 import java.util.List;
 
 @Service
+@Slf4j
 public class DiseaseServiceImpl implements DiseaseService {
 
     private final DiseaseRepository diseaseRepository;
@@ -31,7 +33,9 @@ public class DiseaseServiceImpl implements DiseaseService {
 
         return DiseasesResponseDto.from(
                 diseaseRepository.findAllByDiseaseID_DiseaseAndDiseaseID_Year(disease, year),
-                diseaseRepository.findAllUnpredictedYears(disease), diseaseRepository.findAllPredictedYears(disease));
+                diseaseRepository.findAllUnpredictedYears(disease), diseaseRepository.findAllPredictedYears(disease),
+                year
+        );
     }
 
     @Override
@@ -56,7 +60,8 @@ public class DiseaseServiceImpl implements DiseaseService {
         return DiseasesResponseDto.from(
                 diseaseRepository.findAllByDiseaseID_DistrictAndDiseaseID_Disease(district, disease),
                 diseaseRepository.findAllUnpredictedYears(district, disease),
-                diseaseRepository.findAllPredictedYears(district, disease)
+                diseaseRepository.findAllPredictedYears(district, disease),
+                year
         );
     }
 

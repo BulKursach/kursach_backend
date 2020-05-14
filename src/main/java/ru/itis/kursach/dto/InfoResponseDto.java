@@ -14,7 +14,7 @@ public class InfoResponseDto {
     DiseaseInfoResponseDto артериальнаяГипертензия;
     DiseaseInfoResponseDto сахарныйДиабет;
     DiseaseInfoResponseDto гепатит;
-    DiseaseInfoResponseDto психическиеЗаболевания;
+    DiseaseInfoResponseDto психиатрия;
     DiseaseInfoResponseDto туберкулез;
     DiseaseInfoResponseDto новообразования;
 }

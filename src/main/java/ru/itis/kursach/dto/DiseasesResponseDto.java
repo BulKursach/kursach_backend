@@ -15,15 +15,17 @@ import java.util.List;
 public class DiseasesResponseDto {
     String name;
     String district; // CARE: only useful if requested by certain district!
+    Short year;
     List<Short> yearsNotPredicted;
     List<Short> yearsPredicted;
     List<Disease> data;
 
     public static DiseasesResponseDto from(List<Disease> diseases,
-                                           List<Short> yearsNotPredicted, List<Short> yearsPredicted) {
+                                           List<Short> yearsNotPredicted, List<Short> yearsPredicted, Short year) {
         return DiseasesResponseDto.builder()
                 .name(diseases.get(0).getDiseaseID().getDisease())
                 .district(diseases.get(0).getDiseaseID().getDistrict())
+                .year(year)
                 .data(diseases)
                 .yearsNotPredicted(yearsNotPredicted)
                 .yearsPredicted(yearsPredicted)
