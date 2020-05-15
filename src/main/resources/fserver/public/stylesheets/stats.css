@@ -1,0 +1,435 @@
+/* Очистка */
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+    overflow: hidden;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+
+/* Главная страница */
+
+
+html {
+    height: 100%;
+}
+
+body {
+  background-color: #0B0A0A;
+}
+
+
+/* Типографика */
+
+
+.logo {
+    position: absolute;
+    width: 300px;
+    height: 75px;
+    left: 90px;
+    top: 60px;
+
+    font-family: "Roboto Condensed";
+    font-style: normal;
+    font-weight: bold;
+    font-size: 64px;
+    line-height: 75px;
+
+    text-align: center;
+    color: #F2E8E8;
+}
+
+#infotitle {
+    position: absolute;
+    width: 620px;
+    height: 40px;
+    left: 650px;
+    top: 60px;
+
+    font-family: Roboto Condensed;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 36px;
+    line-height: 42px;
+    text-align: center;
+
+    color: #F2E8E8;
+}
+
+
+/* Выбор года */
+
+.years p{
+    position: relative;
+    width: 72px;
+    height: 42px;
+
+    font-family: "Roboto Condensed";
+    font-style: normal;
+    font-weight: normal;
+    font-size: 36px;
+    line-height: 42px;
+    text-align: center;
+    color: #F2E8E8;
+}
+
+.year-back {
+    position: absolute;
+    width: 100px;
+    height: 45px;
+    left: 750px;
+    top: 160px;
+    
+    border-bottom: 3px solid #EF1010;
+    opacity: 0.5;
+}
+
+.year-back p{
+    left: 14px;
+}
+
+.year-now {
+    position: absolute;
+    width: 100px;
+    height: 45px;
+    left: 910px;
+    top: 160px;
+    
+    border-bottom: 3px solid #EF1010;
+}
+
+.year-now p{
+    left: 14px;
+}
+
+.year-next {
+    position: absolute;
+    width: 100px;
+    height: 45px;
+    left: 1070px;
+    top: 160px;
+    
+    border-bottom: 3px solid #EF1010;
+    opacity: 0.5;
+}
+
+.year-next p{
+    left: 14px;
+}
+
+
+/* Статистика */
+
+
+.button-next {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    left: 1810px;
+    top: 515px;
+}
+
+.button-back {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    left: 60px;
+    top: 515px;
+
+    transform-origin: center;
+    transform: rotate(-180deg);
+}
+
+.first {
+    position: absolute;
+    width: 483px;
+    height: 70px;
+    left: 170px;
+    top: 420px;
+    display: flex;
+    flex-direction: row;
+}
+
+.second {
+    position: absolute;
+    width: 483px;
+    height: 70px;
+    left: 170px;
+    top: 603px;
+    display: flex;
+    flex-direction: row;
+}
+
+.third {
+    position: absolute;
+    width: 483px;
+    height: 70px;
+    left: 1267px;
+    top: 413px;
+    display: flex;
+    flex-direction: row;
+}
+
+.fourth {
+    position: absolute;
+    width: 478px;
+    height: 70px;
+    left: 1272px;
+    top: 596px;
+}
+
+
+/* Элементы id статистика */
+
+
+#circle {
+    position: absolute;
+    width: 540px;/*540 - 466 = 74 = 37 * 2 */
+    height: 505px;/*505 - 436 = 69 = 34,5 * 2 */
+    left: 690px;
+    top: 300px;
+}
+
+#percent {
+    position: relative;
+    width: 160px;
+    height: 70px;
+    font-family: "Roboto Condensed";
+    font-style: normal;
+    font-weight: 300;
+    font-size: 64px;
+    line-height: 75px;
+    text-align: center;
+
+    color: #1A6BE4;
+}
+
+#percent-text {
+    position: relative;
+    width: 308px;
+    height: 70px;
+    font-family: "Roboto Condensed";
+    font-style: normal;
+    font-weight: 300;
+    font-size: 24px;
+    line-height: 28px;
+    display: flex;
+    align-items: center;
+    left: 15px;
+
+    color: #F2E8E8;
+    transform-origin: 0 0;
+}
+
+#count {
+    position: absolute;
+    width: 140px;
+    height: 70px;
+
+    font-family: "Roboto Condensed";
+    font-style: normal;
+    font-weight: 300;
+    font-size: 64px;
+    line-height: 75px;
+    text-align: center;
+
+    color: #EF1010;
+}
+
+#count-text {
+    position: absolute;
+    width: 308px;
+    height: 70px;
+    left: 175px;
+
+    font-family: "Roboto Condensed";
+    font-style: normal;
+    font-weight: 300;
+    font-size: 24px;
+    line-height: 28px;
+    display: flex;
+    align-items: center;
+
+    color: #F2E8E8;
+    transform-origin: 0 0;
+}
+
+#alt-count {
+    position: absolute;
+    width: 160px;
+    height: 70px;
+
+    font-family: "Roboto Condensed";
+    font-style: normal;
+    font-weight: 300;
+    font-size: 64px;
+    line-height: 75px;
+    text-align: center;
+
+    color: #F2E8E8;
+}
+
+#alt-count-text {
+    position: absolute;
+    width: 308px;
+    height: 70px;
+    left: 150px;
+
+    font-family: "Roboto Condensed";
+    font-style: normal;
+    font-weight: 300;
+    font-size: 24px;
+    line-height: 28px;
+    display: flex;
+    align-items: center;
+
+    color: #F2E8E8;
+    transform-origin: 0 0;
+}
+
+#alt-percent {
+    position: absolute;
+    width: 155px;
+    height: 70px;
+
+    font-family: "Roboto Condensed";
+    font-style: normal;
+    font-weight: 300;
+    font-size: 64px;
+    line-height: 75px;
+    text-align: center;
+
+    color: #F2E8E8;
+}
+
+#alt-percent-text {
+    position: absolute;
+    width: 308px;
+    height: 70px;
+    left: 155px;
+    
+    font-family: "Roboto Condensed";
+    font-style: normal;
+    font-weight: 300;
+    font-size: 24px;
+    line-height: 28px;
+    display: flex;
+    align-items: center;
+
+    color: #F2E8E8;
+    transform-origin: 0 0;
+}
+
+
+/* Футер */
+
+
+#disease select::-ms-expand {
+    display: none; 
+}
+
+#disease select{
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+#disease {
+    position: absolute;
+    left: 750px;
+    top: 925px;
+}
+
+#disease select{
+    width: 420px;
+    height: 60px;
+    border-radius: 10px;
+    border: 2px solid #F2E8E8;
+    cursor: pointer;
+    outline: none;
+    
+    text-align-last: center;
+    font-weight: normal;
+    color: #F2E8E8;
+    font-size: 24px;
+    font-family: "Roboto Condensed";
+
+    background: #0B0A0A url(../images/resize.svg) no-repeat, repeat right .7em top 50%, 0 0;
+    background-size: .65em auto, 100%;
+}
+
+.marker-first{
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    left: 910px;
+    top: 1015px;
+}
+
+.marker-second{
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    left: 950px;
+    top: 1015px;
+}
+
+.marker-third{
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    left: 990px;
+    top: 1015px;
+}
+
+.marker-fill{
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    left: 955px;
+    top: 1020px;
+}
+
+/* Сброс отступов */
+
+* {
+    margin: 0;
+}

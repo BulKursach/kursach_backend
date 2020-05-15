@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8"/>
+    <title>MEDCourse</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap"
+          rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/info.css">
+</head>
+<body>
+<div class="container">
+    <header class="header">
+        <div>
+            <a href="/"><h1 class="logo">MEDCourse</h1></a>
+        </div>
+        <div class="disease">
+            <select name="disease"
+                    onchange="this.options[this.selectedIndex].value && (window.location = this.options[this.selectedIndex].value)">
+                <% diseasesNames.forEach(function (disease) { %>
+                    <option value="<%- disease == name ? "" : "?disease=" + disease %>"
+                            <%= disease == name ? "selected=\"\"" : "" %>><%= disease %></option>
+                <% }) %>
+            </select>
+        </div>
+    </header>
+    <section class="main">
+        <section class="years">
+            <% if (yearPast != -1) { %>
+                <div>
+                    <a href="?disease=<%= name %>&year=<%= yearPast %>">
+                        <div class="year-back"><p><%= yearPast %></p></div>
+                    </a>
+                </div>
+            <% } %>
+            <div>
+                <a href="">
+                    <div class="year-now"><p><%= yearNow %></p></div>
+                </a>
+            </div>
+            <% if (yearFuture != -1) { %>
+                <div>
+                <a href="?disease=<%= name %>&year=<%= yearFuture %>">
+                    <div class="year-next"><p><%= yearFuture %></p></div>
+                </a>
+                </div>
+            <% } %>
+        </section>
+        <div class="schedule">
+        <object id="schedule" data="" type="">
+            <script src="https://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js"></script>
+            <canvas id="canvas" width="1580" height="770"></canvas>
+            <script type="text/javascript" src="/javascripts/graph.js"></script>
+        </object>
+        </div>
+        <a href="/info/"><img class="button-next" src="/images/button.svg" alt="Следующая страница"></a>
+        <a href="/"><img class="button-back" src="/images/button.svg" alt="Предыдущая страница"></a>
+    </section>
+
+    <footer class="nav-footer">
+        <div>
+            <p id="ps">*На 100тыс.населения</p>
+        </div>
+
+        <nav class="markers">
+            <div>
+                <a href="/"><img class="marker-first" src="/images/marker.svg" alt="Первая страница"></a>
+            </div>
+            <div>
+                <img class="marker-second" src="/images/marker.svg" alt="Вторая страница">
+            </div>
+            <div>
+                <a href="/info/"><img class="marker-third" src="/images/marker.svg" alt="Третья страница"></a>
+            </div>
+            <div>
+                <img class="marker-fill" src="/images/fill-marker.svg">
+            </div>
+        </nav>
+    </footer>
+</div>
+</body>
+</html>

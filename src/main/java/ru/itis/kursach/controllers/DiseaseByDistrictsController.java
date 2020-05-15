@@ -1,5 +1,6 @@
 package ru.itis.kursach.controllers;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.hateoas.EntityModel;
 import org.springframework.hateoas.IanaLinkRelations;
 import org.springframework.http.ResponseEntity;
@@ -16,6 +17,7 @@ import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 
 @RestController
 @RequestMapping("/districts")
+@Slf4j
 public class DiseaseByDistrictsController extends AbstractController {
 
 

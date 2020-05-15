@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <title>MEDCourse</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap"
+          rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/ways.css">
+</head>
+<body>
+<div class="container">
+    <header class="header">
+        <div class="logo">
+            <a href="/">
+                <h1 id="logo">MEDCourse</h1>
+            </a>
+        </div>
+        <div class="info">
+            <h1 id="title">Информация о болезни</h1>
+            <h1 id="name"><%= name %></h1>
+        </div>
+    </header>
+
+    <% let colors = ['orange', 'magenta', 'springgreen', '#2AD4FF']; %>
+    <% let newColor, lastColor = 'orange'; %>
+
+    <section class="stats">
+        <div class="button">
+            <a href="/districts/all/"><img class="button-back" src="/images/button.svg" alt="Предыдущая страница"></a>
+        </div>
+        <div class="first">
+            <h5 class="etiology">Этиология</h5>
+            <nav id="etiology-text">
+                <ul>
+                    <% data['этиология'].split("\n").forEach(function (value) { %>
+                        <% do {
+                            newColor = colors[Math.floor(Math.random() * colors.length)]
+                        } while (newColor == lastColor); %>
+                        <li style="color: <%= newColor %>"><%= value %></li>
+                        <% lastColor = newColor; %>
+                    <% }) %>
+                </ul>
+            </nav>
+            <h5 class="description">Определение</h5>
+            <nav id="description-text">
+                <ul>
+                    <% data['определение'].split("\n").forEach(function (value) { %>
+                        <% do {
+                            newColor = colors[Math.floor(Math.random() * colors.length)]
+                        } while (newColor == lastColor); %>
+                        <li style="color: <%= newColor %>"><%= value %></li>
+                        <% lastColor = newColor; %>
+                    <% }) %>
+                </ul>
+            </nav>
+        </div>
+
+        <% if (data['механизм'] !== "") { %>
+            <div class="second">
+                <h5 class="mech">Механизм распространения</h5>
+                <nav id="mech-text">
+                    <ul>
+                        <% data['механизм'].split("\n").forEach(function (value) { %>
+                            <% do {
+                                newColor = colors[Math.floor(Math.random() * colors.length)]
+                            } while (newColor == lastColor); %>
+                            <li style="color: <%= newColor %>"><%= value %></li>
+                            <% lastColor = newColor; %>
+                        <% }) %>
+                    </ul>
+                </nav>
+            </div>
+        <% } %>
+
+        <% if (data['путиПередачи'] !== "") { %>
+            <div class="third">
+                <h5 class="transfer">Пути передачи</h5>
+                <nav id="transfer-text">
+                    <ul>
+                        <% data['путиПередачи'].split("\n").forEach(function (value) { %>
+                            <% do {
+                                newColor = colors[Math.floor(Math.random() * colors.length)]
+                            } while (newColor == lastColor); %>
+                            <li style="color: <%= newColor %>"><%= value %></li>
+                            <% lastColor = newColor; %>
+                        <% }) %>
+                    </ul>
+                </nav>
+            </div>
+        <% } %>
+
+        <div class="fourth">
+            <h5 class="symptoms">Симптомы</h5>
+            <nav id="symptoms-text">
+                <ul>
+                    <% data['симптомы'].split("\n").forEach(function (value) { %>
+                        <% do {
+                            newColor = colors[Math.floor(Math.random() * colors.length)]
+                        } while (newColor == lastColor); %>
+                        <li style="color: <%= newColor %>"><%= value %></li>
+                        <% lastColor = newColor; %>
+                    <% }) %>
+                </ul>
+            </nav>
+        </div>
+    </section>
+
+    <footer class="nav-footer">
+        <div id="disease">
+            <select name="disease"
+                    onchange="this.options[this.selectedIndex].value && (window.location = this.options[this.selectedIndex].value)">
+                <% diseasesNames.forEach(function (disease) { %>
+                    <option value="<%- disease == name ? "" : "?disease=" + disease %>"
+                            <%= disease == name ? "selected=\"\"" : "" %>><%= disease %></option>
+                <% }) %>
+            </select>
+        </div>
+        <nav class="markers">
+            <div><a href="/"><img class="marker-first" src="/images/marker.svg" alt="Первая страница"></a></div>
+            <div><a href="/districts/all/?disease=<%= name %>"><img class="marker-second" src="/images/marker.svg"
+                                                               alt="Вторая страница"></a></div>
+            <div><a href=""><img class="marker-third" src="/images/marker.svg" alt="Третья страница"></a></div>
+            <div><a href=""><img class="marker-fill" src="/images/fill-marker.svg"></a></div>
+        </nav>
+    </footer>
+
+</div>
+</body>
+</html>

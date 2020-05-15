@@ -1,18 +1,20 @@
 package ru.itis.kursach.controllers;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.springframework.hateoas.CollectionModel;
 import org.springframework.hateoas.EntityModel;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import ru.itis.kursach.assemblers.DiseasesNameModelAssembler;
 import ru.itis.kursach.dto.DiseaseInfoResponseDto;
 import ru.itis.kursach.dto.InfoResponseDto;
+import ru.itis.kursach.services.DiseaseService;
 
 import java.io.File;
 import java.io.IOException;
 import java.net.URISyntaxException;
+import java.util.List;
+import java.util.stream.Collectors;
 
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
@@ -21,8 +23,16 @@ import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 @RequestMapping("/info")
 public class InfoController extends AbstractController {
 
-    @GetMapping("/{disease}")
-    public ResponseEntity<EntityModel<DiseaseInfoResponseDto>> getInfo(@PathVariable(required = false) String disease)
+    private final DiseaseService diseaseService;
+    private final DiseasesNameModelAssembler diseasesNameModelAssembler;
+
+    public InfoController(DiseaseService diseaseService, DiseasesNameModelAssembler diseasesNameModelAssembler) {
+        this.diseaseService = diseaseService;
+        this.diseasesNameModelAssembler = diseasesNameModelAssembler;
+    }
+
+    @GetMapping
+    public ResponseEntity<EntityModel<DiseaseInfoResponseDto>> getInfo(@RequestParam(required = false) String disease)
             throws URISyntaxException {
         if (disease == null) {
             disease = DEFAULT_DISEASE;
@@ -47,13 +57,13 @@ public class InfoController extends AbstractController {
                 case "новообразования":
                     diseaseInfo = info.getНовообразования();
                     break;
-                case "психические заболевания":
-                    diseaseInfo = info.getПсихическиеЗаболевания();
+                case "психиатрия":
+                    diseaseInfo = info.getПсихиатрия();
                     break;
                 case "сахарный диабет":
                     diseaseInfo = info.getСахарныйДиабет();
                     break;
-                case "туберкулёз":
+                case "туберкулез":
                     diseaseInfo = info.getТуберкулез();
                     break;
                 default:
@@ -67,4 +77,14 @@ public class InfoController extends AbstractController {
         return ResponseEntity.ok(entityModel);
     }
 
+    @GetMapping("/diseases")
+    public ResponseEntity<CollectionModel<EntityModel<String>>> getDiseasesList() {
+
+        List<EntityModel<String>> diseases = diseaseService.getAllDiseaseNames().stream()
+                .map(diseasesNameModelAssembler::toModel)
+                .collect(Collectors.toList());
+
+        return ResponseEntity.ok(CollectionModel.of(diseases,
+                linkTo(methodOn(InfoController.class).getDiseasesList()).withSelfRel()));
+    }
 }
