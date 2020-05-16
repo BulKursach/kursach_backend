@@ -11,15 +11,20 @@ import org.springframework.stereotype.Service;
 public class ARIMALogicServiceImpl implements LogicService {
     @Override
     public Integer predict(double[][] data, double year) {
+        if (data.length == 0) {
+            return 0;
+        }
+        if((int) year < data[0][0]){
+            return (int) (data[0][1]*1.1);
+        }
+
 
         for (int i = 0; i < data.length; i++) {
             if ((int) year == (int) data[i][0]) {
                 return (int) data[i][1];
             }
         }
-        if (data.length == 0) {
-            return 0;
-        }
+
 
         if (data.length == 1) {
             return (int) (data[0][1] * 0.9);
