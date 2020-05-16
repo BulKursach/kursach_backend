@@ -16,7 +16,7 @@
 <section class="years">
     <% if (yearPast != -1) { %>
         <div>
-            <a href="?disease=<%= name %>&year=<%= yearPast %>">
+            <a href="?district=<%= district %>&disease=<%= name %>&year=<%= yearPast %>">
                 <div class="year-back"><p><%= yearPast %></p></div>
             </a>
         </div>
@@ -28,7 +28,7 @@
     </div>
     <% if (yearFuture != -1) { %>
         <div>
-            <a href="?disease=<%= name %>&year=<%= yearFuture %>">
+            <a href="?district=<%= district %>&disease=<%= name %>&year=<%= yearFuture %>">
                 <div class="year-next"><p><%= yearFuture %></p></div>
             </a>
         </div>
@@ -61,12 +61,14 @@
         <canvas id="canvas" width="540" height="505"></canvas>
         <script type="text/javascript" src="/javascripts/circle.js"></script>
     </object>
-    <a href="/info"><img class="button-next" src="/images/button.svg" alt="Следующая страница"></a>
+    <a href="/info<%= name !== 'ВИЧ'
+            ? '?disease=' + encodeURIComponent(name)
+            : '' %>"><img class="button-next" src="/images/button.svg" alt="Следующая страница"></a>
     <a href="/"><img class="button-back" src="/images/button.svg" alt="Предыдущая страница"></a>
 </section>
 
 <footer>
-    <div id="disease">
+    <div class="disease">
         <select name="disease"
                 onchange="this.options[this.selectedIndex].value && (window.location = this.options[this.selectedIndex].value)">
             <% diseasesNames.forEach(function (disease) { %>
@@ -76,9 +78,11 @@
         </select>
     </div>
 
-    <a href="index.ejs"><img class="marker-first" src="/images/marker.svg" alt="Первая страница"></a>
+    <a href="/"><img class="marker-first" src="/images/marker.svg" alt="Первая страница"></a>
     <img class="marker-second" src="/images/marker.svg" alt="Вторая страница">
-    <a href="info.ejs"><img class="marker-third" src="/images/marker.svg" alt="Третья страница"></a>
+    <a href="/info<%= name !== 'ВИЧ'
+            ? '?disease=' + encodeURIComponent(name)
+            : '' %>"><img class="marker-third" src="/images/marker.svg" alt="Третья страница"></a>
     <img class="marker-fill" src="/images/fill-marker.svg">
 </footer>
 </body>

@@ -17,7 +17,7 @@
     <section class="regions">
         <% data.forEach(function(district) { %>
             <div class="region-container">
-                <a href="<%= '/districts/?district=' + district.district %>"
+                <a href="<%= '/districts?district=' + district.district %>"
                    onmouseover="document.getElementById('region_id').innerHTML = '<%= district.district.replace(/(?:^|\s|["'([{])+\S/g, match => match.toUpperCase()) %>'"
                    onmouseout="document.getElementById('region_id').innerHTML = 'Выберите округ'">
                     <% switch (district.district) {

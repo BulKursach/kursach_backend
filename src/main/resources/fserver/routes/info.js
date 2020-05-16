@@ -21,12 +21,15 @@ router.get('/', function (req, res, next) {
             }
         ))
         .catch(error => console.log(error))
-        .finally(() => res.render('info', {
-            title: 'MEDCourse',
-            diseasesNames: diseasesNames,
-            name: name,
-            data: data
-        }))
+        .finally(() => {
+            res.render('info', {
+                from: res.locals.sessionFlash,
+                title: 'MEDCourse',
+                diseasesNames: diseasesNames,
+                name: name,
+                data: data
+            });
+        })
 });
 
 module.exports = router;

@@ -39,11 +39,13 @@ public class DiseaseServiceImpl implements DiseaseService {
     }
 
     @Override
-    public DiseasesResponseDto getDiseaseDataByDistrict(String district, String disease) {
+    public DiseasesResponseDto getDiseaseDataByDistrict(String district, String disease, Short year) {
 
         List<Disease> data = diseaseRepository.findAllByDiseaseID_DistrictAndDiseaseID_Disease(district, disease);
 
-        short year = (short) (lastNotPredicted(disease) + 1);
+        if (year == null) {
+            year = (short) (lastNotPredicted(disease) + 1);
+        }
 
         if (disease.equals("ВИЧ")) {
             diseaseRepository.savePredictedDataWithChildes(disease, year, district,

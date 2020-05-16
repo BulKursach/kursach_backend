@@ -11,7 +11,7 @@ public interface DiseaseService {
 
     DiseasesResponseDto getDiseaseDataByAllDistricts(String disease, Short year);
 
-    DiseasesResponseDto getDiseaseDataByDistrict(String district, String disease);
+    DiseasesResponseDto getDiseaseDataByDistrict(String district, String disease, Short year);
 
     Short lastNotPredicted(String disease);
 

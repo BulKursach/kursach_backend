@@ -19,6 +19,7 @@ public class DiseaseModelAssembler implements RepresentationModelAssembler<Disea
                 linkTo(methodOn(DiseaseByDistrictsController.class)
                         .getDiseaseDataByDistrict(
                                 diseasesResponseDto.getDistrict(),
-                                diseasesResponseDto.getName())).withSelfRel());
+                                diseasesResponseDto.getName(),
+                                diseasesResponseDto.getYear())).withSelfRel());
     }
 }

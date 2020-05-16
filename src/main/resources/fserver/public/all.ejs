@@ -52,7 +52,9 @@
             <script type="text/javascript" src="/javascripts/graph.js"></script>
         </object>
         </div>
-        <a href="/info/"><img class="button-next" src="/images/button.svg" alt="Следующая страница"></a>
+        <a href="/info<%= name !== 'ВИЧ'
+                ? '?disease=' + encodeURIComponent(name)
+                : '' %>"><img class="button-next" src="/images/button.svg" alt="Следующая страница"></a>
         <a href="/"><img class="button-back" src="/images/button.svg" alt="Предыдущая страница"></a>
     </section>
 
@@ -69,7 +71,9 @@
                 <img class="marker-second" src="/images/marker.svg" alt="Вторая страница">
             </div>
             <div>
-                <a href="/info/"><img class="marker-third" src="/images/marker.svg" alt="Третья страница"></a>
+                <a href="/info<%= name !== 'ВИЧ'
+                        ? '?disease=' + encodeURIComponent(name)
+                        : '' %>"><img class="marker-third" src="/images/marker.svg" alt="Третья страница"></a>
             </div>
             <div>
                 <img class="marker-fill" src="/images/fill-marker.svg">

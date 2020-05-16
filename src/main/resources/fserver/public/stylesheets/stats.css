@@ -1,55 +1,4 @@
-/* Очистка */
-
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed, 
-figure, figcaption, footer, header, hgroup, 
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
-	margin: 0;
-	padding: 0;
-	border: 0;
-	font-size: 100%;
-	font: inherit;
-	vertical-align: baseline;
-    overflow: hidden;
-}
-/* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure, 
-footer, header, hgroup, menu, nav, section {
-	display: block;
-}
-body {
-	line-height: 1;
-}
-ol, ul {
-	list-style: none;
-}
-blockquote, q {
-	quotes: none;
-}
-blockquote:before, blockquote:after,
-q:before, q:after {
-	content: '';
-	content: none;
-}
-table {
-	border-collapse: collapse;
-	border-spacing: 0;
-}
-
-
-/* Главная страница */
-
-
-html {
+html, body {
     height: 100%;
 }
 
@@ -363,36 +312,38 @@ body {
 /* Футер */
 
 
-#disease select::-ms-expand {
-    display: none; 
+.disease select::-ms-expand {
+    display: none;
 }
 
-#disease select{
+.disease select{
     -webkit-appearance: none;
     appearance: none;
 }
 
-#disease {
+.disease {
     position: absolute;
     left: 750px;
     top: 925px;
 }
 
-#disease select{
+.disease select{
     width: 420px;
     height: 60px;
+    background: #0B0A0A;
     border-radius: 10px;
     border: 2px solid #F2E8E8;
     cursor: pointer;
     outline: none;
-    
+
     text-align-last: center;
     font-weight: normal;
     color: #F2E8E8;
     font-size: 24px;
-    font-family: "Roboto Condensed";
 
-    background: #0B0A0A url(../images/resize.svg) no-repeat, repeat right .7em top 50%, 0 0;
+    background-image: url(../images/resize-down.svg);
+    background-repeat: no-repeat, repeat;
+    background-position: right .7em top 50%, 0 0;
     background-size: .65em auto, 100%;
 }
 

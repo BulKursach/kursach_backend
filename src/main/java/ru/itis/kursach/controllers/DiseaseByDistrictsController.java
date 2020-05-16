@@ -52,12 +52,13 @@ public class DiseaseByDistrictsController extends AbstractController {
     @GetMapping
     public ResponseEntity<EntityModel<DiseasesResponseDto>> getDiseaseDataByDistrict(
             @RequestParam String district,
-            @RequestParam(required = false, defaultValue = DEFAULT_DISEASE) String disease) {
+            @RequestParam(required = false, defaultValue = DEFAULT_DISEASE) String disease,
+            @RequestParam(required = false) Short year) {
 
         EntityModel<DiseasesResponseDto> diseases = EntityModel.of(
-                diseaseService.getDiseaseDataByDistrict(district, disease),
+                diseaseService.getDiseaseDataByDistrict(district, disease, year),
                 linkTo(methodOn(DiseaseByDistrictsController.class)
-                        .getDiseaseDataByDistrict(district, disease)).withSelfRel());
+                        .getDiseaseDataByDistrict(district, disease, year)).withSelfRel());
 
         return ResponseEntity.ok(diseases);
     }

@@ -26,7 +26,9 @@
 
     <section class="stats">
         <div class="button">
-            <a href="/districts/all/"><img class="button-back" src="/images/button.svg" alt="Предыдущая страница"></a>
+            <a href="<%= from ? from.message : '/districts/all' %><%= name !== 'ВИЧ'
+                    ? '?disease=' + encodeURIComponent(name)
+                    : '' %>"><img class="button-back" src="/images/button.svg" alt="Предыдущая страница"></a>
         </div>
         <div class="first">
             <h5 class="etiology">Этиология</h5>
@@ -117,7 +119,9 @@
         </div>
         <nav class="markers">
             <div><a href="/"><img class="marker-first" src="/images/marker.svg" alt="Первая страница"></a></div>
-            <div><a href="/districts/all/?disease=<%= name %>"><img class="marker-second" src="/images/marker.svg"
+            <div><a href="<%= from ? from.message : '/districts/all' %><%= name !== 'ВИЧ'
+                        ? '?disease=' + encodeURIComponent(name)
+                        : '' %>"><img class="marker-second" src="/images/marker.svg"
                                                                alt="Вторая страница"></a></div>
             <div><a href=""><img class="marker-third" src="/images/marker.svg" alt="Третья страница"></a></div>
             <div><a href=""><img class="marker-fill" src="/images/fill-marker.svg"></a></div>
