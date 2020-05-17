@@ -3,6 +3,7 @@ html, body {
     font-style: normal;
 
     height: 100%;
+    overflow: auto;
 }
 
 body {
@@ -44,20 +45,21 @@ a {
     flex-basis: 60%;
     display: flex;
     flex-direction: column;
-    margin-bottom: 220px;
 }
 
 .years {
-    width: 100%;
+    width: 420px;
     height: 20%;
     flex-basis: 10%;
     display: flex;
-    margin-left: 790px;
-    margin-bottom: 90px;
+    justify-content: space-between;
+    margin-left: 750px;
+    margin-top: 30px;
 }
 .schedule {
     width: 100%;
-    height: 80%;
+    height: 100%;
+    margin-top: 30px;
 }
 
 .years p {
@@ -65,10 +67,10 @@ a {
     width: 72px;
     height: 42px;
 
-    margin-left: 15px;
-    padding-left: 15px;
-    margin-right: 15px;
-    padding-right: 15px;
+    /*margin-left: 15px;*/
+    /*padding-left: 15px;*/
+    /*margin-right: 15px;*/
+    /*padding-right: 15px;*/
 
     font-weight: normal;
     font-size: 36px;
@@ -83,7 +85,6 @@ a {
     /*height: 45px;*/
     /*left: 750px;*/
     /*top: 160px;*/
-
     border-bottom: 3px solid #EF1010;
     opacity: 0.5;
 }
@@ -96,9 +97,8 @@ a {
     /*position: absolute;*/
     /*width: 100px;*/
     /*height: 45px;*/
-    /*left: 910px;*/
+    /*left: 20px;*/
     /*top: 160px;*/
-
     border-bottom: 3px solid #EF1010;
 }
 
@@ -112,7 +112,6 @@ a {
     /*height: 45px;*/
     /*left: 1070px;*/
     /*top: 160px;*/
-
     border-bottom: 3px solid #EF1010;
     opacity: 0.5;
 }
@@ -126,18 +125,19 @@ a {
 
 
 #schedule {
-    position: absolute;
-    width: 1580px;
-    height: 770px;
-    left: 147px;
-    top: 239px;
+    position: relative;
+    left: 7%;
+    /*width: 1580px;*/
+    /*height: 770px;*/
+    /*left: 147px;*/
+    /*top: 239px;*/
 }
 
 .button-next {
     position: absolute;
     width: 50px;
     height: 50px;
-    left: 1810px;
+    right: 30px;
     top: 515px;
 }
 
@@ -145,7 +145,7 @@ a {
     position: absolute;
     width: 50px;
     height: 50px;
-    left: 60px;
+    left: 30px;
     top: 515px;
 
     transform-origin: center;
@@ -204,8 +204,8 @@ a {
 }
 
 .disease {
-    align-self: baseline;
-    margin-left: 20%;
+    align-self: center;
+    margin-left: 350px;
     margin-top: 5px;
 }
 
@@ -218,6 +218,7 @@ a {
     cursor: pointer;
     outline: none;
 
+    font-family: "Roboto Condensed";
     text-align-last: center;
     font-weight: normal;
     color: #F2E8E8;
@@ -237,7 +238,7 @@ a {
     width: 329px;
     height: 28px;
     left: 205px;
-    top: 1037px;
+    top: 900px;
 
     font-weight: normal;
     font-size: 24px;
@@ -276,8 +277,8 @@ footer {
     align-self: center;
     position: relative;
     right: 55px;
-    bottom: 2.5px;
 }
+
 /* Сброс отступов */
 
 * {

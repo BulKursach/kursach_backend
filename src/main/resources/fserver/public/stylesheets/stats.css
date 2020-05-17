@@ -1,5 +1,5 @@
 html, body {
-    height: 100%;
+    height: auto;
 }
 
 body {
@@ -44,8 +44,22 @@ body {
     color: #F2E8E8;
 }
 
+a {
+    outline: none;
+    text-decoration: none;
+}
 
 /* Выбор года */
+
+.years {
+    width: 420px;
+    height: 20%;
+    flex-basis: 10%;
+    display: flex;
+    justify-content: space-between;
+    margin-left: 750px;
+    margin-top: 143px;
+}
 
 .years p{
     position: relative;
@@ -62,47 +76,47 @@ body {
 }
 
 .year-back {
-    position: absolute;
-    width: 100px;
-    height: 45px;
-    left: 750px;
-    top: 160px;
-    
+    /*position: absolute;*/
+    /*width: 100px;*/
+    /*height: 45px;*/
+    /*left: 750px;*/
+    /*top: 160px;*/
+
     border-bottom: 3px solid #EF1010;
     opacity: 0.5;
 }
 
 .year-back p{
-    left: 14px;
+    /*left: 14px;*/
 }
 
 .year-now {
-    position: absolute;
-    width: 100px;
-    height: 45px;
-    left: 910px;
-    top: 160px;
-    
+    /*position: absolute;*/
+    /*width: 100px;*/
+    /*height: 45px;*/
+    /*left: 910px;*/
+    /*top: 160px;*/
+
     border-bottom: 3px solid #EF1010;
 }
 
 .year-now p{
-    left: 14px;
+    /*left: 14px;*/
 }
 
 .year-next {
-    position: absolute;
-    width: 100px;
-    height: 45px;
-    left: 1070px;
-    top: 160px;
-    
+    /*position: absolute;*/
+    /*width: 100px;*/
+    /*height: 45px;*/
+    /*left: 1070px;*/
+    /*top: 160px;*/
+
     border-bottom: 3px solid #EF1010;
     opacity: 0.5;
 }
 
 .year-next p{
-    left: 14px;
+    /*left: 14px;*/
 }
 
 
@@ -131,9 +145,9 @@ body {
 .first {
     position: absolute;
     width: 483px;
-    height: 70px;
+    height: 13px;
     left: 170px;
-    top: 420px;
+    top: 363px;
     display: flex;
     flex-direction: row;
 }
@@ -143,7 +157,7 @@ body {
     width: 483px;
     height: 70px;
     left: 170px;
-    top: 603px;
+    top: 546px;
     display: flex;
     flex-direction: row;
 }
@@ -153,7 +167,7 @@ body {
     width: 483px;
     height: 70px;
     left: 1267px;
-    top: 413px;
+    top: 356px;
     display: flex;
     flex-direction: row;
 }
@@ -163,7 +177,7 @@ body {
     width: 478px;
     height: 70px;
     left: 1272px;
-    top: 596px;
+    top: 539px;
 }
 
 
@@ -175,7 +189,7 @@ body {
     width: 540px;/*540 - 466 = 74 = 37 * 2 */
     height: 505px;/*505 - 436 = 69 = 34,5 * 2 */
     left: 690px;
-    top: 300px;
+    top: 243px;
 }
 
 #percent {
@@ -295,7 +309,7 @@ body {
     width: 308px;
     height: 70px;
     left: 155px;
-    
+
     font-family: "Roboto Condensed";
     font-style: normal;
     font-weight: 300;
@@ -324,7 +338,7 @@ body {
 .disease {
     position: absolute;
     left: 750px;
-    top: 925px;
+    top: 800px;
 }
 
 .disease select{
@@ -336,6 +350,7 @@ body {
     cursor: pointer;
     outline: none;
 
+    font-family: "Roboto Condensed";
     text-align-last: center;
     font-weight: normal;
     color: #F2E8E8;
@@ -352,7 +367,7 @@ body {
     width: 20px;
     height: 20px;
     left: 910px;
-    top: 1015px;
+    top: 900px;
 }
 
 .marker-second{
@@ -360,7 +375,7 @@ body {
     width: 20px;
     height: 20px;
     left: 950px;
-    top: 1015px;
+    top: 900px;
 }
 
 .marker-third{
@@ -368,7 +383,7 @@ body {
     width: 20px;
     height: 20px;
     left: 990px;
-    top: 1015px;
+    top: 900px;
 }
 
 .marker-fill{
@@ -376,7 +391,7 @@ body {
     width: 10px;
     height: 10px;
     left: 955px;
-    top: 1020px;
+    top: 905px;
 }
 
 /* Сброс отступов */

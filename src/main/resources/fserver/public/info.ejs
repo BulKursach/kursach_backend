@@ -21,8 +21,7 @@
         </div>
     </header>
 
-    <% let colors = ['orange', 'magenta', 'springgreen', '#2AD4FF']; %>
-    <% let newColor, lastColor = 'orange'; %>
+    <% let colors = ['#F2E8E8', '#EF1010']; %>
 
     <section class="stats">
         <div class="button">
@@ -35,11 +34,7 @@
             <nav id="etiology-text">
                 <ul>
                     <% data['этиология'].split("\n").forEach(function (value) { %>
-                        <% do {
-                            newColor = colors[Math.floor(Math.random() * colors.length)]
-                        } while (newColor == lastColor); %>
-                        <li style="color: <%= newColor %>"><%= value %></li>
-                        <% lastColor = newColor; %>
+                        <li style="color: <%= colors[0] %>"><%= value %></li>
                     <% }) %>
                 </ul>
             </nav>
@@ -47,11 +42,7 @@
             <nav id="description-text">
                 <ul>
                     <% data['определение'].split("\n").forEach(function (value) { %>
-                        <% do {
-                            newColor = colors[Math.floor(Math.random() * colors.length)]
-                        } while (newColor == lastColor); %>
-                        <li style="color: <%= newColor %>"><%= value %></li>
-                        <% lastColor = newColor; %>
+                        <li style="color: <%= colors[0] %>"><%= value %></li>
                     <% }) %>
                 </ul>
             </nav>
@@ -63,11 +54,7 @@
                 <nav id="mech-text">
                     <ul>
                         <% data['механизм'].split("\n").forEach(function (value) { %>
-                            <% do {
-                                newColor = colors[Math.floor(Math.random() * colors.length)]
-                            } while (newColor == lastColor); %>
-                            <li style="color: <%= newColor %>"><%= value %></li>
-                            <% lastColor = newColor; %>
+                            <li style="color: <%= colors[0] %>"><%= value %></li>
                         <% }) %>
                     </ul>
                 </nav>
@@ -80,11 +67,7 @@
                 <nav id="transfer-text">
                     <ul>
                         <% data['путиПередачи'].split("\n").forEach(function (value) { %>
-                            <% do {
-                                newColor = colors[Math.floor(Math.random() * colors.length)]
-                            } while (newColor == lastColor); %>
-                            <li style="color: <%= newColor %>"><%= value %></li>
-                            <% lastColor = newColor; %>
+                            <li style="color: <%= colors[0] %>"><%= value %></li>
                         <% }) %>
                     </ul>
                 </nav>
@@ -96,11 +79,7 @@
             <nav id="symptoms-text">
                 <ul>
                     <% data['симптомы'].split("\n").forEach(function (value) { %>
-                        <% do {
-                            newColor = colors[Math.floor(Math.random() * colors.length)]
-                        } while (newColor == lastColor); %>
-                        <li style="color: <%= newColor %>"><%= value %></li>
-                        <% lastColor = newColor; %>
+                        <li style="color: <%= colors[0] %>"><%= value %></li>
                     <% }) %>
                 </ul>
             </nav>
