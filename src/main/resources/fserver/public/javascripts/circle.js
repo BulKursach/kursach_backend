@@ -1,20 +1,37 @@
 var c = document.getElementById('canvas');
-var district = document.getElementById('region_id');
+var district = document.getElementById('infotitle');
 var disease = document.getElementById('disease_select');
-var year = document.getElementsByClassName("year-now");
+var year = document.getElementsByClassName("year-now")[0].textContent;
 var ctx = c.getContext('2d');
 var x = 270;
 var y = 253;
 // / 1580 * c.width   / 770 * c.height
 
-$.get("http://localhost:8080/districts", "district=" + String.prototype.toLowerCase(district) +
+var abs_child, rel_child, isPredicted = false, predicted;
+
+$.get("http://localhost:8080/districts", "district=" + district.textContent.toLowerCase() +
     "&disease=" + disease.options[disease.selectedIndex].text +
     "&year=" + year,
     function(data, status) {
         console.log(status);
         var info = getData(data);
-        valuesCircle.value = info.data[0].abs;
-        percentCircle.percent = info.data[0].rel;
+        predicted = info.yearsPredicted;
+
+        for (let i = 0; i < info.data.length; i++) {
+            if (year.localeCompare(info.data[i].diseaseID.year) === 0) {
+                if(predicted.find(function(element) {
+                    return element.toString().localeCompare(year) === 0;
+                })){
+                    isPredicted = true;
+                }
+                console.log(isPredicted)
+                valuesCircle.value = info.data[i].abs;
+                percentCircle.percent = info.data[i].rel;
+                abs_child = info.data[i].abs_child;
+                rel_child = info.data[i].rel_child;
+                break;
+            }
+        }
     });
 
 function getData(data) {
@@ -28,32 +45,32 @@ var valuesCircle = new function() {
     //displayed value in circle #changeThis
     var value = 7122;
     this.draw = function() {
-        var x1 = Math.cos((-value / maxValue * 2 + 0.5) * Math.PI) * r;
-        var y1 = Math.sin((-value / maxValue * 2 + 0.5) * Math.PI) * r;
+        var x1 = Math.cos((-valuesCircle.value / maxValue * 2 + 0.5) * Math.PI) * r;
+        var y1 = Math.sin((-valuesCircle.value / maxValue * 2 + 0.5) * Math.PI) * r;
 
         var gradient1 = ctx.createLinearGradient(
             Math.cos(0.5 * Math.PI) * r + x,
             Math.sin(0.5 * Math.PI) * r + y,
-            Math.cos((-value / maxValue + 0.5) * Math.PI) * r + x,
-            Math.sin((-value / maxValue + 0.5) * Math.PI) * r + y);
+            Math.cos((-valuesCircle.value / maxValue + 0.5) * Math.PI) * r + x,
+            Math.sin((-valuesCircle.value / maxValue + 0.5) * Math.PI) * r + y);
         gradient1.addColorStop(0, "#1A6BE4");
         gradient1.addColorStop(1, "#853D79");
 
         var gradient2 = ctx.createLinearGradient(
-            Math.cos((-value / maxValue + 0.5) * Math.PI) * r + x,
-            Math.sin((-value / maxValue + 0.5) * Math.PI) * r + y,
+            Math.cos((-valuesCircle.value / maxValue + 0.5) * Math.PI) * r + x,
+            Math.sin((-valuesCircle.value / maxValue + 0.5) * Math.PI) * r + y,
             x1 + x, y1 + y);
         gradient2.addColorStop(0, "#853D79");
         gradient2.addColorStop(1, "#EF1010");
 
         ctx.beginPath();
-        ctx.arc(x, y, r, 0.5 * Math.PI, (-value / maxValue + 0.5) * Math.PI, true);
+        ctx.arc(x, y, r, 0.5 * Math.PI, (-valuesCircle.value / maxValue + 0.5) * Math.PI, true);
         ctx.lineWidth = 5;
         ctx.strokeStyle = gradient1;
         ctx.stroke();
 
         ctx.beginPath();
-        ctx.arc(x, y, r, (-value / maxValue + 0.5) * Math.PI, (-value / maxValue * 2 + 0.5) * Math.PI, true);
+        ctx.arc(x, y, r, (-valuesCircle.value / maxValue + 0.5) * Math.PI, (-valuesCircle.value / maxValue * 2 + 0.5) * Math.PI, true);
         ctx.lineWidth = 5;
         ctx.strokeStyle = gradient2;
         ctx.stroke();
@@ -65,7 +82,7 @@ var valuesCircle = new function() {
         ctx.fillText(maxValue, x, y + r + 25);
 
         ctx.fillStyle = "#EF1010";
-        ctx.fillText(value, x1 * 25 / (Math.sqrt(x1 * x1 + y1 * y1)) + x + x1, y1 * 25 / (Math.sqrt(x1 * x1 + y1 * y1)) + y + y1);
+        ctx.fillText(valuesCircle.value, x1 * 25 / (Math.sqrt(x1 * x1 + y1 * y1)) + x + x1, y1 * 25 / (Math.sqrt(x1 * x1 + y1 * y1)) + y + y1);
     }
 }
 
@@ -74,10 +91,10 @@ var percentCircle = new function() {
     //max value in circle #changeThis
     var maxPercent = 100;
     //displayed value in circle #changeThis
-    var percent = 135;
+    var percent = 52.5;
     this.draw = function() {
         ctx.beginPath();
-        ctx.arc(x, y, r, 0.5 * Math.PI, (-percent / maxPercent * 2 + 0.5) * Math.PI, true);
+        ctx.arc(x, y, r, 0.5 * Math.PI, (-percentCircle.percent / maxPercent * 2 + 0.5) * Math.PI, true);
         ctx.lineWidth = 5;
         ctx.strokeStyle = "#1A6BE4";
         ctx.stroke();
@@ -86,7 +103,7 @@ var percentCircle = new function() {
         ctx.fillStyle = "#1A6BE4";
         ctx.textAlign = "center";
         ctx.textBaseline = "middle";
-        ctx.fillText(percent + "%", x, y);
+        ctx.fillText(percentCircle.percent + "%", x, y);
     }
 }
 
@@ -103,6 +120,35 @@ WebFont.load({
 function loop() {
     ctx.fillStyle = '#0B0A0A';
     ctx.fillRect(0, 0, c.width, c.height);
+
+    if(percentCircle.percent === null){
+        document.getElementById('percent').innerHTML = "-";
+    } else {
+        document.getElementById('percent').innerHTML = percentCircle.percent + "%";
+    }
+
+    if(valuesCircle.value === null){
+        document.getElementById('count').innerHTML = "-";
+    } else {
+        document.getElementById('count').innerHTML = valuesCircle.value;
+    }
+
+    if(abs_child === null){
+        document.getElementById('alt-count').innerHTML = "-";
+    } else {
+        document.getElementById('alt-count').innerHTML = abs_child;
+    }
+
+    if(rel_child === null){
+        document.getElementById('alt-percent').innerHTML = "-";
+    } else {
+        document.getElementById('alt-percent').innerHTML = rel_child + "%";
+    }
+
+    if(isPredicted){
+        document.getElementById('prognosed').innerText = "Результаты были спрогнозированы с использованием искуственного интеллекта";
+    }
+
     valuesCircle.draw();
     percentCircle.draw();
 }

@@ -14,8 +14,8 @@ import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 
 @RestController
 @RequestMapping("/districts")
-@CrossOrigin(origins = "http://localhost:3000", allowedHeaders = "*")
 @Slf4j
+@CrossOrigin(origins = "http://localhost:3000", allowedHeaders = "*")
 public class DiseaseByDistrictsController extends AbstractController {
 
 
