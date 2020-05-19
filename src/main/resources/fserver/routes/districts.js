@@ -72,7 +72,7 @@ router.get('/all', function (req, res, next) {
 router.get('/', function (req, res, next) {
 
     let diseasesNames, name, district, data, yearNow, yearPast, yearFuture;
-
+    
     axios.all([
         axios.get('http://localhost:8080/districts'
             + '?district=' + (req.query.district === undefined

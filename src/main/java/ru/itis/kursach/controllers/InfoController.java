@@ -21,6 +21,7 @@ import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 
 @RestController
 @RequestMapping("/info")
+@CrossOrigin(origins = "http://localhost:3000", allowedHeaders = "*")
 public class InfoController extends AbstractController {
 
     private final DiseaseService diseaseService;

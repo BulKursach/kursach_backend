@@ -4,10 +4,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.hateoas.EntityModel;
 import org.springframework.hateoas.IanaLinkRelations;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import ru.itis.kursach.assemblers.DiseaseModelAssembler;
 import ru.itis.kursach.dto.DiseasesResponseDto;
 import ru.itis.kursach.services.DiseaseService;
@@ -17,6 +14,7 @@ import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 
 @RestController
 @RequestMapping("/districts")
+@CrossOrigin(origins = "http://localhost:3000", allowedHeaders = "*")
 @Slf4j
 public class DiseaseByDistrictsController extends AbstractController {
 
