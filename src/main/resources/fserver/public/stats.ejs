@@ -13,6 +13,25 @@
     <h1 id="infotitle">Дальневосточный федеральный округ</h1>
 </header>
 
+<footer>
+    <div class="disease">
+        <select name="disease" id="disease_select"
+                onchange="this.options[this.selectedIndex].value && (window.location = this.options[this.selectedIndex].value)">
+            <% diseasesNames.forEach(function (disease) { %>
+                <option value="<%- disease == name ? "" : "?disease=" + disease %>"
+                        <%= disease == name ? "selected=\"\"" : "" %>><%= disease %></option>
+            <% }) %>
+        </select>
+    </div>
+
+    <a href="/"><img class="marker-first" src="/images/marker.svg" alt="Первая страница"></a>
+    <img class="marker-second" src="/images/marker.svg" alt="Вторая страница">
+    <a href="/info<%= name !== 'ВИЧ'
+            ? '?disease=' + encodeURIComponent(name)
+            : '' %>"><img class="marker-third" src="/images/marker.svg" alt="Третья страница"></a>
+    <img class="marker-fill" src="/images/fill-marker.svg">
+</footer>
+
 <section class="years">
     <% if (yearPast != -1) { %>
         <div>
@@ -67,23 +86,4 @@
             : '' %>"><img class="button-next" src="/images/button.svg" alt="Следующая страница"></a>
     <a href="/"><img class="button-back" src="/images/button.svg" alt="Предыдущая страница"></a>
 </section>
-
-<footer>
-    <div class="disease">
-        <select name="disease"
-                onchange="this.options[this.selectedIndex].value && (window.location = this.options[this.selectedIndex].value)">
-            <% diseasesNames.forEach(function (disease) { %>
-                <option value="<%- disease == name ? "" : "?disease=" + disease %>"
-                        <%= disease == name ? "selected=\"\"" : "" %>><%= disease %></option>
-            <% }) %>
-        </select>
-    </div>
-
-    <a href="/"><img class="marker-first" src="/images/marker.svg" alt="Первая страница"></a>
-    <img class="marker-second" src="/images/marker.svg" alt="Вторая страница">
-    <a href="/info<%= name !== 'ВИЧ'
-            ? '?disease=' + encodeURIComponent(name)
-            : '' %>"><img class="marker-third" src="/images/marker.svg" alt="Третья страница"></a>
-    <img class="marker-fill" src="/images/fill-marker.svg">
-</footer>
 </body>

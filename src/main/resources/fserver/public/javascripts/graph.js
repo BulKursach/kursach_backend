@@ -8,13 +8,18 @@ var values = [12405, 6535, 6866, 1754, 20102, 14504, 21489, 3477];
 var percents = [33, 40.3, 41.3, 16, 68, 117.4, 115.2, 33.1];
 
 $.get("http://localhost:8080/districts", "district=%D1%83%D1%80%D0%B0%D0%BB%D1%8C%D1%81%D0%BA%D0%B8%D0%B9%20%D1%84%D0%B5%D0%B4%D0%B5%D1%80%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D0%B9%20%D0%BE%D0%BA%D1%80%D1%83%D0%B3&disease=%D0%92%D0%98%D0%A7&year=2019", function(data, status) {
-    console.log(data);
-    let info = JSON.parse(data);
+    console.log(status);
+    var info = getData(data);
     console.log(info.data[0].abs);
-    // for (var i = 0; i < values.length; i++) {
-    //     values[i] = 
-    // }
+// for (var i = 0; i < values.length; i++) {
+// values[i] =
+// }
 });
+
+function getData(data) {
+    return typeof data === "string" ? JSON.parse(data) : data;
+}
+
 
 function drawBorderLines() {
     //vertical line

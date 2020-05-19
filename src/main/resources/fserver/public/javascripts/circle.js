@@ -1,7 +1,25 @@
 var c = document.getElementById('canvas');
+var district = document.getElementById('region_id');
+var disease = document.getElementById('disease_select');
+var year = document.getElementsByClassName("year-now");
 var ctx = c.getContext('2d');
 var x = 270;
 var y = 253;
+// / 1580 * c.width   / 770 * c.height
+
+$.get("http://localhost:8080/districts", "district=" + String.prototype.toLowerCase(district) +
+    "&disease=" + disease.options[disease.selectedIndex].text +
+    "&year=" + year,
+    function(data, status) {
+        console.log(status);
+        var info = getData(data);
+        valuesCircle.value = info.data[0].abs;
+        percentCircle.percent = info.data[0].rel;
+    });
+
+function getData(data) {
+    return typeof data === "string" ? JSON.parse(data) : data;
+}
 
 var valuesCircle = new function() {
     var r = 200;
@@ -56,7 +74,7 @@ var percentCircle = new function() {
     //max value in circle #changeThis
     var maxPercent = 100;
     //displayed value in circle #changeThis
-    var percent = 62.8;
+    var percent = 135;
     this.draw = function() {
         ctx.beginPath();
         ctx.arc(x, y, r, 0.5 * Math.PI, (-percent / maxPercent * 2 + 0.5) * Math.PI, true);
