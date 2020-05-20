@@ -14,7 +14,7 @@
             <a href="/"><h1 class="logo">MEDCourse</h1></a>
         </div>
         <div class="disease">
-            <select name="disease"
+            <select name="disease" id="disease_select"
                     onchange="this.options[this.selectedIndex].value && (window.location = this.options[this.selectedIndex].value)">
                 <% diseasesNames.forEach(function (disease) { %>
                     <option value="<%- disease == name ? "" : "?disease=" + disease %>"
@@ -60,8 +60,13 @@
     </section>
 
     <footer class="nav-footer">
+
         <div>
-            <p id="ps">*На 100тыс.населения</p>
+            <p id="prognosed"></p>
+        </div>
+
+        <div>
+            <p id="ps">* Процент на 100тыс.населения</p>
         </div>
 
         <nav class="markers">

@@ -41,7 +41,7 @@ function getData(data) {
 var valuesCircle = new function() {
     var r = 200;
     //max value in circle #changeThis
-    var maxValue = 10000;
+    var maxValue = 100000;
     //displayed value in circle #changeThis
     var value = 7122;
     this.draw = function() {
@@ -79,7 +79,7 @@ var valuesCircle = new function() {
         ctx.fillStyle = "#1A6BE4";
         ctx.textAlign = "center";
         ctx.textBaseline = "middle";
-        ctx.fillText(maxValue, x, y + r + 25);
+        ctx.fillText(maxValue, x, y + r - 25);
 
         ctx.fillStyle = "#EF1010";
         ctx.fillText(valuesCircle.value, x1 * 25 / (Math.sqrt(x1 * x1 + y1 * y1)) + x + x1, y1 * 25 / (Math.sqrt(x1 * x1 + y1 * y1)) + y + y1);
@@ -94,7 +94,7 @@ var percentCircle = new function() {
     var percent = 52.5;
     this.draw = function() {
         ctx.beginPath();
-        ctx.arc(x, y, r, 0.5 * Math.PI, (-percentCircle.percent / maxPercent * 2 + 0.5) * Math.PI, true);
+        ctx.arc(x, y, r, 0.5 * Math.PI, (-(percentCircle.percent * 100 / 100000) / maxPercent * 2 + 0.5) * Math.PI, true);
         ctx.lineWidth = 5;
         ctx.strokeStyle = "#1A6BE4";
         ctx.stroke();
@@ -103,7 +103,7 @@ var percentCircle = new function() {
         ctx.fillStyle = "#1A6BE4";
         ctx.textAlign = "center";
         ctx.textBaseline = "middle";
-        ctx.fillText(percentCircle.percent + "%", x, y);
+        ctx.fillText((percentCircle.percent * 100 / 100000) + "%", x, y);
     }
 }
 
@@ -124,7 +124,7 @@ function loop() {
     if(percentCircle.percent === null){
         document.getElementById('percent').innerHTML = "-";
     } else {
-        document.getElementById('percent').innerHTML = percentCircle.percent + "%";
+        document.getElementById('percent').innerHTML = percentCircle.percent;
     }
 
     if(valuesCircle.value === null){
@@ -142,7 +142,7 @@ function loop() {
     if(rel_child === null){
         document.getElementById('alt-percent').innerHTML = "-";
     } else {
-        document.getElementById('alt-percent').innerHTML = rel_child + "%";
+        document.getElementById('alt-percent').innerHTML = rel_child;
     }
 
     if(isPredicted){

@@ -236,7 +236,7 @@ a {
 
 ul {
     overflow: hidden;
-    list-style-type: '- ';
+    list-style-type: ' ';
     /*overflow-y: scroll;*/
 }
 
