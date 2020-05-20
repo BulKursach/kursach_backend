@@ -237,15 +237,32 @@ a {
     position: absolute;
     width: 329px;
     height: 28px;
-    left: 205px;
-    top: 900px;
+    left: 30px;
+    bottom: 30px;
 
     font-weight: normal;
-    font-size: 24px;
+    font-size: 20px;
     line-height: 28px;
     text-align: center;
 
     color: #1A6BE4;
+}
+
+#prognosed {
+    position: absolute;
+    right: 30px;
+    bottom: 30px;
+
+    font-family: "Roboto Condensed";
+    font-style: normal;
+    font-weight: 300;
+    font-size: 20px;
+    line-height: 28px;
+    display: flex;
+    align-items: center;
+
+    color: #76C11D;
+    transform-origin: 0 0;
 }
 
 footer {

@@ -1,4 +1,6 @@
 var c = document.getElementById('canvas');
+var disease = document.getElementById('disease_select');
+var year = document.getElementsByClassName("year-now")[0].textContent;
 var ctx = c.getContext('2d');
 
 var positions = [150, 340, 530, 720, 910, 1100, 1290, 1480];
@@ -7,19 +9,44 @@ var values = [12405, 6535, 6866, 1754, 20102, 14504, 21489, 3477];
 //percent values in graph #changeThis
 var percents = [33, 40.3, 41.3, 16, 68, 117.4, 115.2, 33.1];
 
-$.get("http://localhost:8080/districts", "district=%D1%83%D1%80%D0%B0%D0%BB%D1%8C%D1%81%D0%BA%D0%B8%D0%B9%20%D1%84%D0%B5%D0%B4%D0%B5%D1%80%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D0%B9%20%D0%BE%D0%BA%D1%80%D1%83%D0%B3&disease=%D0%92%D0%98%D0%A7&year=2019", function(data, status) {
-    console.log(status);
-    var info = getData(data);
-    console.log(info.data[0].abs);
-// for (var i = 0; i < values.length; i++) {
-// values[i] =
-// }
-});
+var predicted, isPredicted = false;
+
+$.get("http://localhost:8080/districts/all", "disease=" + disease.options[disease.selectedIndex].text + "&year=" + year,
+    function(data, status) {
+        console.log(status);
+        var info = getData(data);
+        predicted = info.yearsPredicted;
+
+        if(predicted.find(function(element) {
+            return element.toString().localeCompare(year) === 0;
+        })){
+            isPredicted = true;
+        }
+
+        values[0] = info.data[6].abs;
+        values[1] = info.data[1].abs;
+        values[2] = info.data[2].abs;
+        values[3] = info.data[3].abs;
+        values[4] = info.data[8].abs;
+        values[5] = info.data[4].abs;
+        values[6] = info.data[5].abs;
+        values[7] = info.data[7].abs;
+
+        percents[0] = info.data[6].rel;
+        percents[1] = info.data[1].rel;
+        percents[2] = info.data[2].rel;
+        percents[3] = info.data[3].rel;
+        percents[4] = info.data[8].rel;
+        percents[5] = info.data[4].rel;
+        percents[6] = info.data[5].rel;
+        percents[7] = info.data[7].rel;
+
+        loop();
+    });
 
 function getData(data) {
     return typeof data === "string" ? JSON.parse(data) : data;
 }
-
 
 function drawBorderLines() {
     //vertical line
@@ -88,7 +115,7 @@ function drawValues() {
         ctx.fillText("/", positions[i] / 1580 * c.width, 30 / 770 * c.height);
         ctx.fillStyle = "#1A6BE4";
         ctx.textAlign = "left";
-        ctx.fillText(percents[i] + "%", (positions[i] + 5) / 1580 * c.width, 30 / 770 * c.height);
+        ctx.fillText(percents[i], (positions[i] + 5) / 1580 * c.width, 30 / 770 * c.height);
         ctx.font = "24px Roboto Condensed";
         ctx.fillStyle = "white";
         ctx.textAlign = "center";
@@ -165,6 +192,7 @@ function calculateMaxPercent() {
             max = percents[i];
     }
     return (parseInt(max / 10) + 1) * 10;
+    // return 1000;
 }
 
 WebFont.load({
@@ -188,4 +216,8 @@ function loop() {
     drawLeft(max);
     drawValueGraph(max);
     drawPercentGraph(calculateMaxPercent());
+
+    if(isPredicted){
+        document.getElementById('prognosed').innerText = "Результаты были спрогнозированы с использованием искуственного интеллекта";
+    }
 }
