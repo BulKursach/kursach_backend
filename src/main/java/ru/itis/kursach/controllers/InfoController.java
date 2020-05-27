@@ -43,7 +43,7 @@ public class InfoController extends AbstractController {
         DiseaseInfoResponseDto diseaseInfo;
         EntityModel<DiseaseInfoResponseDto> entityModel;
         try {
-            info = mapper.readValue(new File("src/main/resources/description.json"),
+            info = mapper.readValue(new File(this.getClass().getResource("/description.json").getPath()),
                     InfoResponseDto.class);
             switch (disease.toLowerCase()) {
                 case "вич":

@@ -5,7 +5,7 @@
     <title>MEDCourse</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap"
           rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="/stylesheets/ways.css">
+    <link rel="stylesheet" type="text/css" href="stylesheets/ways.css">
 </head>
 <body>
 <div class="container">
@@ -27,7 +27,7 @@
         <div class="button">
             <a href="<%= from ? from.message : '/districts/all' %><%= name !== 'ВИЧ'
                     ? '?disease=' + encodeURIComponent(name)
-                    : '' %>"><img class="button-back" src="/images/button.svg" alt="Предыдущая страница"></a>
+                    : '' %>"><img class="button-back" src="images/button.svg" alt="Предыдущая страница"></a>
         </div>
         <div class="first">
             <h5 class="etiology">Этиология</h5>
@@ -97,13 +97,13 @@
             </select>
         </div>
         <nav class="markers">
-            <div><a href="/"><img class="marker-first" src="/images/marker.svg" alt="Первая страница"></a></div>
+            <div><a href="/"><img class="marker-first" src="images/marker.svg" alt="Первая страница"></a></div>
             <div><a href="<%= from ? from.message : '/districts/all' %><%= name !== 'ВИЧ'
                         ? '?disease=' + encodeURIComponent(name)
-                        : '' %>"><img class="marker-second" src="/images/marker.svg"
+                        : '' %>"><img class="marker-second" src="images/marker.svg"
                                                                alt="Вторая страница"></a></div>
-            <div><a href=""><img class="marker-third" src="/images/marker.svg" alt="Третья страница"></a></div>
-            <div><a href=""><img class="marker-fill" src="/images/fill-marker.svg"></a></div>
+            <div><a href=""><img class="marker-third" src="images/marker.svg" alt="Третья страница"></a></div>
+            <div><a href=""><img class="marker-fill" src="images/fill-marker.svg"></a></div>
         </nav>
     </footer>
 
