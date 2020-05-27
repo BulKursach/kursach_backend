@@ -9,7 +9,7 @@ var y = 253;
 
 var abs_child, rel_child, isPredicted = false, predicted;
 
-$.get("http://" + window.location.hostname +":8080/districts?district=" + district.textContent.toLowerCase() +
+$.get("http://localhost:8080/districts?district=" + district.textContent.toLowerCase() +
     "&disease=" + disease.options[disease.selectedIndex].text +
     "&year=" + year,
     function(data, status) {
