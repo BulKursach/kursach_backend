@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="utf-8">
+    <meta charset="utf-8"/>
     <title>MEDCourse</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap"
           rel="stylesheet">
@@ -50,13 +50,13 @@
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
             <script src="https://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js"></script>
             <canvas id="canvas" width="1580" height="600"></canvas>
-            <script type="text/javascript" src="javascripts/graph.js"></script>
+            <script type="text/javascript" src="/javascripts/graph.js"></script>
         </object>
         </div>
         <a href="/info<%= name !== 'ВИЧ'
                 ? '?disease=' + encodeURIComponent(name)
-                : '' %>"><img class="button-next" src="images/button.svg" alt="Следующая страница"></a>
-        <a href="/"><img class="button-back" src="images/button.svg" alt="Предыдущая страница"></a>
+                : '' %>"><img class="button-next" src="/images/button.svg" alt="Следующая страница"></a>
+        <a href="/"><img class="button-back" src="/images/button.svg" alt="Предыдущая страница"></a>
     </section>
 
     <footer class="nav-footer">
@@ -71,18 +71,18 @@
 
         <nav class="markers">
             <div>
-                <a href="/"><img class="marker-first" src="images/marker.svg" alt="Первая страница"></a>
+                <a href="/"><img class="marker-first" src="/images/marker.svg" alt="Первая страница"></a>
             </div>
             <div>
-                <img class="marker-second" src="images/marker.svg" alt="Вторая страница">
+                <img class="marker-second" src="/images/marker.svg" alt="Вторая страница">
             </div>
             <div>
                 <a href="/info<%= name !== 'ВИЧ'
                         ? '?disease=' + encodeURIComponent(name)
-                        : '' %>"><img class="marker-third" src="images/marker.svg" alt="Третья страница"></a>
+                        : '' %>"><img class="marker-third" src="/images/marker.svg" alt="Третья страница"></a>
             </div>
             <div>
-                <img class="marker-fill" src="images/fill-marker.svg">
+                <img class="marker-fill" src="/images/fill-marker.svg">
             </div>
         </nav>
     </footer>
