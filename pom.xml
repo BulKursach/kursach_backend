@@ -10,7 +10,7 @@
     </parent>
     <groupId>ru.itis</groupId>
     <artifactId>kursach</artifactId>
-    <version>0.2</version>
+    <version>0.3</version>
     <packaging>war</packaging>
     <name>kursach</name>
     <description>Backend for MEDCourse</description>
@@ -111,8 +111,8 @@
                 <version>2.2</version>
                 <configuration>
                     <url>http://localhost:8080/manager/text</url>
-                    <server>MedCourseworkBackendServer</server>
-                    <path>/</path>
+                    <server>TomcatServer</server>
+                    <path>/app</path>
                 </configuration>
             </plugin>
             <plugin>
