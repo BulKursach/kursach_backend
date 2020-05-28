@@ -11,7 +11,7 @@ var percents = [33, 40.3, 41.3, 16, 68, 117.4, 115.2, 33.1];
 
 var predicted, isPredicted = false;
 
-$.get("http://localhost:8080/districts/all", "disease=" + disease.options[disease.selectedIndex].text + "&year=" + year,
+$.get("http://5.53.125.224:8080/districts/all?disease=" + disease.options[disease.selectedIndex].text + "&year=" + year,
     function(data, status) {
         console.log(status);
         var info = getData(data);
@@ -24,19 +24,19 @@ $.get("http://localhost:8080/districts/all", "disease=" + disease.options[diseas
         }
 
         values[0] = info.data[6].abs;
-        values[1] = info.data[1].abs;
-        values[2] = info.data[2].abs;
-        values[3] = info.data[3].abs;
-        values[4] = info.data[8].abs;
+        values[1] = info.data[0].abs;
+        values[2] = info.data[1].abs;
+        values[3] = info.data[2].abs;
+        values[4] = info.data[3].abs;
         values[5] = info.data[4].abs;
         values[6] = info.data[5].abs;
         values[7] = info.data[7].abs;
 
         percents[0] = info.data[6].rel;
-        percents[1] = info.data[1].rel;
-        percents[2] = info.data[2].rel;
-        percents[3] = info.data[3].rel;
-        percents[4] = info.data[8].rel;
+        percents[1] = info.data[0].rel;
+        percents[2] = info.data[1].rel;
+        percents[3] = info.data[2].rel;
+        percents[4] = info.data[3].rel;
         percents[5] = info.data[4].rel;
         percents[6] = info.data[5].rel;
         percents[7] = info.data[7].rel;

@@ -21,7 +21,6 @@ import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 
 @RestController
 @RequestMapping("/info")
-@CrossOrigin(origins = "http://localhost:3000", allowedHeaders = "*")
 public class InfoController extends AbstractController {
 
     private final DiseaseService diseaseService;
@@ -43,7 +42,7 @@ public class InfoController extends AbstractController {
         DiseaseInfoResponseDto diseaseInfo;
         EntityModel<DiseaseInfoResponseDto> entityModel;
         try {
-            info = mapper.readValue(new File("src/main/resources/description.json"),
+            info = mapper.readValue(new File(this.getClass().getResource("/description.json").getPath()),
                     InfoResponseDto.class);
             switch (disease.toLowerCase()) {
                 case "вич":

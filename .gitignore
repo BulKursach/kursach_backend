@@ -48,3 +48,4 @@ application.properties
 mvnw
 mvnw.cmd
 /src/main/resources/fserver/node_modules/
+/med-coursework-parser/.idea/
