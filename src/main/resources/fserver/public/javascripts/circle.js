@@ -49,16 +49,16 @@ var valuesCircle = new function() {
         var y1 = Math.sin((-valuesCircle.value / maxValue * 2 + 0.5) * Math.PI) * r;
 
         var gradient1 = ctx.createLinearGradient(
-            Math.cos(0.5 * Math.PI) * r + x,
-            Math.sin(0.5 * Math.PI) * r + y,
-            Math.cos((-valuesCircle.value / maxValue + 0.5) * Math.PI) * r + x,
-            Math.sin((-valuesCircle.value / maxValue + 0.5) * Math.PI) * r + y);
+            Math.cos(0.5 * Math.PI).toFixed(2) * r + x,
+            Math.sin(0.5 * Math.PI).toFixed(2) * r + y,
+            Math.cos((-valuesCircle.value / maxValue + 0.5) * Math.PI).toFixed(2) * r + x,
+            Math.sin((-valuesCircle.value / maxValue + 0.5) * Math.PI).toFixed(2) * r + y);
         gradient1.addColorStop(0, "#1A6BE4");
         gradient1.addColorStop(1, "#853D79");
 
         var gradient2 = ctx.createLinearGradient(
-            Math.cos((-valuesCircle.value / maxValue + 0.5) * Math.PI) * r + x,
-            Math.sin((-valuesCircle.value / maxValue + 0.5) * Math.PI) * r + y,
+            Math.cos((-valuesCircle.value / maxValue + 0.5) * Math.PI).toFixed(2) * r + x,
+            Math.sin((-valuesCircle.value / maxValue + 0.5) * Math.PI).toFixed(2) * r + y,
             x1 + x, y1 + y);
         gradient2.addColorStop(0, "#853D79");
         gradient2.addColorStop(1, "#EF1010");
