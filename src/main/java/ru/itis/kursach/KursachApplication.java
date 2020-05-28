@@ -31,7 +31,7 @@ public class KursachApplication extends SpringBootServletInitializer {
         return new WebMvcConfigurer() {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
-                registry.addMapping("/**").allowedOrigins("http://5.53.125.224:3000");
+                registry.addMapping("/**").allowedOrigins("*");
             }
         };
     }
