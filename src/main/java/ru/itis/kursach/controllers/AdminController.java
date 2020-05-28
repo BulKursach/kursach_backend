@@ -17,7 +17,7 @@ import javax.validation.Valid;
 
 @Controller
 @RequestMapping("/admin")
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins = "http://5.53.125.224::3000")
 public class AdminController extends AbstractController {
 
     private DistrictService districtService;
