@@ -44,7 +44,7 @@ var valuesCircle = new function() {
     //max value in circle #changeThis
     var maxValue = 100000;
     //displayed value in circle #changeThis
-    var value = 7122;
+    var value;
     this.draw = function() {
         var x1 = Math.cos((-value / maxValue * 2 + 0.5) * Math.PI) * r;
         var y1 = Math.sin((-value / maxValue * 2 + 0.5) * Math.PI) * r;
@@ -92,7 +92,7 @@ var percentCircle = new function() {
     //max value in circle #changeThis
     var maxPercent = 100;
     //displayed value in circle #changeThis
-    var percent = 52.5;
+    var percent;
     this.draw = function() {
         ctx.beginPath();
         ctx.arc(x, y, r, 0.5 * Math.PI, (-(percent * 100 / 100000) / maxPercent * 2 + 0.5) * Math.PI, true);
