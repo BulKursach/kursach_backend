@@ -11,7 +11,7 @@ var percents = [33, 40.3, 41.3, 16, 68, 117.4, 115.2, 33.1];
 
 var predicted, isPredicted = false;
 
-$.get("http://5.53.125.224:8080/districts/all?disease=" + disease.options[disease.selectedIndex].text + "&year=" + year,
+$.get("http://localhost:8080/districts/all?disease=" + disease.options[disease.selectedIndex].text + "&year=" + year,
     function(data, status) {
         console.log(status);
         var info = getData(data);
