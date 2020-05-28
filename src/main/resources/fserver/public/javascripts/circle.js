@@ -44,34 +44,34 @@ var valuesCircle = new function() {
     //max value in circle #changeThis
     var maxValue = 100000;
     //displayed value in circle #changeThis
-    var value;
+    var value = 0;
     this.draw = function() {
-        var x1 = Math.cos((-value / maxValue * 2 + 0.5) * Math.PI) * r;
-        var y1 = Math.sin((-value / maxValue * 2 + 0.5) * Math.PI) * r;
+        var x1 = Math.cos((-valuesCircle.value / maxValue * 2 + 0.5) * Math.PI) * r;
+        var y1 = Math.sin((-valuesCircle.value / maxValue * 2 + 0.5) * Math.PI) * r;
 
         var gradient1 = ctx.createLinearGradient(
             Math.cos(0.5 * Math.PI) * r + x,
             Math.sin(0.5 * Math.PI) * r + y,
-            Math.cos((-value / maxValue + 0.5) * Math.PI) * r + x,
-            Math.sin((-value / maxValue + 0.5) * Math.PI) * r + y);
+            Math.cos((-valuesCircle.value / maxValue + 0.5) * Math.PI) * r + x,
+            Math.sin((-valuesCircle.value / maxValue + 0.5) * Math.PI) * r + y);
         gradient1.addColorStop(0, "#1A6BE4");
         gradient1.addColorStop(1, "#853D79");
 
         var gradient2 = ctx.createLinearGradient(
-            Math.cos((-value / maxValue + 0.5) * Math.PI) * r + x,
-            Math.sin((-value / maxValue + 0.5) * Math.PI) * r + y,
+            Math.cos((-valuesCircle.value / maxValue + 0.5) * Math.PI) * r + x,
+            Math.sin((-valuesCircle.value / maxValue + 0.5) * Math.PI) * r + y,
             x1 + x, y1 + y);
         gradient2.addColorStop(0, "#853D79");
         gradient2.addColorStop(1, "#EF1010");
 
         ctx.beginPath();
-        ctx.arc(x, y, r, 0.5 * Math.PI, (-value / maxValue + 0.5) * Math.PI, true);
+        ctx.arc(x, y, r, 0.5 * Math.PI, (-valuesCircle.value / maxValue + 0.5) * Math.PI, true);
         ctx.lineWidth = 5;
         ctx.strokeStyle = gradient1;
         ctx.stroke();
 
         ctx.beginPath();
-        ctx.arc(x, y, r, (-value / maxValue + 0.5) * Math.PI, (-value / maxValue * 2 + 0.5) * Math.PI, true);
+        ctx.arc(x, y, r, (-valuesCircle.value / maxValue + 0.5) * Math.PI, (-valuesCircle.value / maxValue * 2 + 0.5) * Math.PI, true);
         ctx.lineWidth = 5;
         ctx.strokeStyle = gradient2;
         ctx.stroke();
@@ -83,7 +83,7 @@ var valuesCircle = new function() {
         ctx.fillText(maxValue, x, y + r - 25);
 
         ctx.fillStyle = "#EF1010";
-        ctx.fillText(value, x1 * 25 / (Math.sqrt(x1 * x1 + y1 * y1)) + x + x1, y1 * 25 / (Math.sqrt(x1 * x1 + y1 * y1)) + y + y1);
+        ctx.fillText(valuesCircle.value, x1 * 25 / (Math.sqrt(x1 * x1 + y1 * y1)) + x + x1, y1 * 25 / (Math.sqrt(x1 * x1 + y1 * y1)) + y + y1);
     }
 }
 
@@ -92,10 +92,10 @@ var percentCircle = new function() {
     //max value in circle #changeThis
     var maxPercent = 100;
     //displayed value in circle #changeThis
-    var percent;
+    var percent = 0;
     this.draw = function() {
         ctx.beginPath();
-        ctx.arc(x, y, r, 0.5 * Math.PI, (-(percent * 100 / 100000) / maxPercent * 2 + 0.5) * Math.PI, true);
+        ctx.arc(x, y, r, 0.5 * Math.PI, (-(percentCircle.percent * 100 / 100000) / maxPercent * 2 + 0.5) * Math.PI, true);
         ctx.lineWidth = 5;
         ctx.strokeStyle = "#1A6BE4";
         ctx.stroke();
@@ -104,7 +104,7 @@ var percentCircle = new function() {
         ctx.fillStyle = "#1A6BE4";
         ctx.textAlign = "center";
         ctx.textBaseline = "middle";
-        ctx.fillText((percent * 100 / 100000) + "%", x, y);
+        ctx.fillText((percentCircle.percent * 100 / 100000) + "%", x, y);
     }
 }
 
