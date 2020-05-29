@@ -76,10 +76,10 @@ var valuesCircle = new function() {
         ctx.strokeStyle = gradient2;
         ctx.stroke();
 
-        // ctx.font = "bold 18px Roboto Condensed";
+        ctx.font = "bold 18px Roboto Condensed";
         // ctx.fillStyle = "#1A6BE4";
-        // ctx.textAlign = "center";
-        // ctx.textBaseline = "middle";
+        ctx.textAlign = "center";
+        ctx.textBaseline = "middle";
         // ctx.fillText(maxValue, x, y + r - 25);
 
         ctx.fillStyle = "#EF1010";
