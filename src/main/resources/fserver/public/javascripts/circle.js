@@ -76,11 +76,11 @@ var valuesCircle = new function() {
         ctx.strokeStyle = gradient2;
         ctx.stroke();
 
-        ctx.font = "bold 18px Roboto Condensed";
-        ctx.fillStyle = "#1A6BE4";
-        ctx.textAlign = "center";
-        ctx.textBaseline = "middle";
-        ctx.fillText(maxValue, x, y + r - 25);
+        // ctx.font = "bold 18px Roboto Condensed";
+        // ctx.fillStyle = "#1A6BE4";
+        // ctx.textAlign = "center";
+        // ctx.textBaseline = "middle";
+        // ctx.fillText(maxValue, x, y + r - 25);
 
         ctx.fillStyle = "#EF1010";
         ctx.fillText(valuesCircle.value, x1 * 25 / (Math.sqrt(x1 * x1 + y1 * y1)) + x + x1, y1 * 25 / (Math.sqrt(x1 * x1 + y1 * y1)) + y + y1);
